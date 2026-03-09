@@ -1,0 +1,20 @@
+<svg width="500" height="350" viewBox="0 0 500 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .orange { fill: #EE7B30; }
+      .black { fill: #000000; }
+      .white { fill: #FFFFFF; }
+    </style>
+  </defs>
+
+  <g transform="translate(12, 12)">
+    <path class="orange" d="M80 50 H420 L380 110 H120 L80 50 Z" /> <path class="orange" d="M210 110 H290 V280 H210 V110 Z" /> <path class="orange" d="M120 110 L210 250 H160 L70 110 H120 Z" /> <path class="orange" d="M380 110 L290 250 H340 L430 110 H380 Z" /> </g>
+
+  <g>
+    <path class="black" d="M80 50 H248 V110 H120 L80 50 Z" /> <path class="black" d="M252 50 H420 L380 110 H252 V50 Z" /> <rect x="235" y="120" width="30" height="160" class="black" />
+    
+    <path class="black" d="M130 120 L215 250 L195 250 L110 120 H130 Z" />
+    <path class="black" d="M370 120 L285 250 L305 250 L390 120 H370 Z" />
+
+    <path class="white" d="M248 50 V110 H252 V50 H248 Z" /> <path class="white" d="M220 120 H230 V250 H220 V120 Z" /> <path class="white" d="M270 120 H280 V250 H270 V120 Z" /> </g>
+</svg>
