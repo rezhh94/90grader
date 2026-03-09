@@ -38,6 +38,12 @@ export default function HomePage() {
         {/* Grid background - removed as we use global layout grid now */}
       </section>
 
+      {/* Trust Bar */}
+      <div className="w-full bg-orange-600/5 py-4 border-b border-white/5 flex items-center justify-center gap-4 text-orange-500 font-mono text-sm tracking-wider uppercase">
+        <div className="w-2.5 h-2.5 rounded-full bg-orange-500 pulse-status shrink-0" />
+        <span className="opacity-90">Akkurat nå: 3 tømrere aktive i Bærum | Siste vindusservice utført i Oslo for 45 min siden.</span>
+      </div>
+
       {/* Metrics Strip */}
       <section className="px-6 md:px-20 py-12 border-b border-white/5 bg-gradient-to-r from-transparent via-white/[0.01] to-transparent">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
