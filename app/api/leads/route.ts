@@ -16,9 +16,14 @@ export async function POST(req: Request) {
             console.error('[SUPABASE ERROR] Failed to save lead:', error.message);
         }
 
-        // 2. Sjekk om kunden er aktiv (Din bryter)
-        if (process.env.PARTNER_ACTIVE !== 'true') {
-            return NextResponse.json({ status: 'Logged but not forwarded' });
+        // 2. Sjekk om kunden er aktiv (Din bryter) via Supabase
+        const { data: settings } = await supabase
+            .from('project_settings')
+            .select('partner_active')
+            .single();
+
+        if (!settings?.partner_active) {
+            return NextResponse.json({ status: 'Logged but not forwarded', message: "Lead captured. Delivery paused due to inactive partner status." });
         }
 
         // 3. Send videre til 90 Grader (E-post/SMS)
