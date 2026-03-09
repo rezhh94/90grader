@@ -18,7 +18,8 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
         setIsSubmitting(true);
         setStatus('idle');
 
-        const formData = new FormData(e.currentTarget);
+        const form = e.currentTarget;
+        const formData = new FormData(form);
         const data = {
             name: formData.get('name'),
             phone: formData.get('phone'),
@@ -40,7 +41,7 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
 
             if (response.ok && result.success) {
                 setStatus('success');
-                e.currentTarget.reset();
+                form.reset();
             } else {
                 setStatus('error');
             }

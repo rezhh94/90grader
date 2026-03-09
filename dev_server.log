@@ -1,0 +1,53 @@
+
+> 90grader@0.1.0 dev
+> next dev
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/reezy/pnpm-lock.yaml as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/reezy/Desktop/90grader/package-lock.json
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.115:3000
+- Environments: .env.local
+
+✓ Starting...
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+✓ Ready in 438ms
+ GET /x90-ops-center-delta 200 in 1057ms (compile: 410ms, proxy.ts: 90ms, render: 557ms)
+ GET /oslo/vindusservice 200 in 1234ms (compile: 909ms, generate-params: 345ms, render: 325ms)
+ GET /oslo/kjerneboring 200 in 1134ms (compile: 884ms, generate-params: 569ms, render: 251ms)
+ GET / 200 in 1127ms (compile: 158ms, render: 969ms)
+ HEAD / 200 in 38ms (compile: 3ms, render: 34ms)
+ GET / 200 in 95ms (compile: 6ms, render: 89ms)
+ GET / 200 in 83ms (compile: 5ms, render: 78ms)
+ GET / 200 in 78ms (compile: 5ms, render: 73ms)
+ GET / 200 in 53ms (compile: 2ms, render: 51ms)
+ GET /x90-ops-center-delta 200 in 67ms (compile: 7ms, proxy.ts: 6ms, render: 54ms)
+ GET / 200 in 75ms (compile: 6ms, render: 69ms)
+ GET / 200 in 147ms (compile: 6ms, render: 142ms)
+ GET / 200 in 127ms (compile: 5ms, render: 122ms)
+ GET /x90-ops-center-delta 200 in 84ms (compile: 7ms, proxy.ts: 7ms, render: 70ms)
+ GET /oslo/kjerneboring 200 in 39ms (compile: 11ms, generate-params: 3ms, render: 28ms)
+ POST /api/leads 200 in 1193ms (compile: 69ms, render: 1125ms)
+ GET /x90-ops-center-delta 200 in 53ms (compile: 8ms, proxy.ts: 5ms, render: 41ms)
+ GET /oslo/kjerneboring 200 in 135ms (compile: 12ms, generate-params: 3ms, render: 123ms)
+ POST /api/leads 200 in 1319ms (compile: 5ms, render: 1314ms)
+ POST /api/leads 200 in 1143ms (compile: 3ms, render: 1140ms)
+ GET /x90-ops-center-delta 200 in 233ms (compile: 6ms, proxy.ts: 3ms, render: 224ms)
+ GET /x90-ops-center-delta 200 in 69ms (compile: 6ms, proxy.ts: 13ms, render: 49ms)
+✓ Compiled in 338ms
+✓ Compiled in 265ms
+ GET /x90-ops-center-delta 200 in 372ms (compile: 163ms, proxy.ts: 6ms, render: 203ms)
+ GET /oslo/kjerneboring 200 in 389ms (compile: 275ms, generate-params: 29µs, render: 114ms)
+ GET /oslo/vindusservice 200 in 421ms (compile: 45ms, generate-params: 1548µs, render: 377ms)
+ GET /oslo/kjerneboring 200 in 127ms (compile: 8ms, generate-params: 25µs, render: 119ms)
+ GET /admin-login 200 in 119ms (compile: 47ms, render: 72ms)
+ GET /x90-ops-center-delta 200 in 31ms (compile: 7ms, proxy.ts: 11ms, render: 14ms)
+ POST /x90-ops-center-delta 200 in 350ms (compile: 6ms, proxy.ts: 10ms, render: 334ms)
+ POST /x90-ops-center-delta 200 in 345ms (compile: 1571µs, proxy.ts: 1679µs, render: 342ms)
+ GET /oslo/kjerneboring 200 in 147ms (compile: 14ms, generate-params: 3ms, render: 134ms)
+ POST /api/leads 200 in 1164ms (compile: 7ms, render: 1157ms)

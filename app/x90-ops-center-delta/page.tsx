@@ -1,10 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { getAdminData, togglePartnerStatus } from './actions';
 
 export default function AdminDashboard() {
     const [leads, setLeads] = useState<any[]>([]);
@@ -15,16 +11,15 @@ export default function AdminDashboard() {
     }, []);
 
     async function fetchData() {
-        const { data: leadsData } = await supabase.from('leads').select('*').order('created_at', { ascending: false });
-        const { data: settings } = await supabase.from('project_settings').select('partner_active').single();
+        const { leadsData, settings } = await getAdminData();
         if (leadsData) setLeads(leadsData);
         if (settings) setIsActive(settings.partner_active);
     }
 
     async function toggleSwitch() {
         const nextState = !isActive;
-        const { error } = await supabase.from('project_settings').update({ partner_active: nextState }).eq('id', 'global');
-        if (!error) setIsActive(nextState);
+        const success = await togglePartnerStatus(nextState);
+        if (success) setIsActive(nextState);
     }
 
     return (

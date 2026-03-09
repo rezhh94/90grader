@@ -23,7 +23,7 @@ export async function POST(req: Request) {
             .single();
 
         if (!settings?.partner_active) {
-            return NextResponse.json({ status: 'Logged but not forwarded', message: "Lead captured. Delivery paused due to inactive partner status." });
+            return NextResponse.json({ success: true, status: 'Logged but not forwarded', message: "Lead captured. Delivery paused due to inactive partner status." });
         }
 
         // 3. Send videre til 90 Grader (E-post/SMS)
