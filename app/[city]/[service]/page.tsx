@@ -68,15 +68,15 @@ export default async function ServiceCityPage({ params }: PageProps) {
     };
 
     return (
-        <div className="bg-[#0A0A0A] text-white">
+        <div className="text-white min-h-screen">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
 
             {/* Hero */}
-            <section className="relative pt-24 pb-16 px-6 md:px-20 border-b border-white/10">
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,95,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,95,0,0.02)_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none" />
+            <section className="relative pt-24 pb-16 px-6 md:px-20 border-b border-white/5">
+                {/* Hero grid removed, relying on root layout grid */}
 
                 <div className="relative z-10 max-w-4xl mx-auto">
                     {/* Breadcrumb */}
@@ -127,7 +127,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Main Content */}
                     <div className="lg:col-span-2 space-y-8">
-                        <div className="p-8 border border-white/10 bg-white/[0.03] rounded-sm">
+                        <div className="p-8 border border-white/5 bg-white/[0.01] rounded-none">
                             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
                                 <span className="w-8 h-[2px] bg-orange-600" />
                                 Om tjenesten
@@ -153,7 +153,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
                                 { title: 'Erfarne Fagfolk', desc: 'Sertifiserte og kvalifiserte håndverkere.' },
                                 { title: 'Rask Respons', desc: service.vakt ? 'Utrykning innen kort tid.' : 'Rask oppstart etter avtale.' },
                             ].map((feature) => (
-                                <div key={feature.title} className="p-6 border border-white/10 bg-white/[0.02] rounded-sm">
+                                <div key={feature.title} className="p-6 border border-white/5 bg-white/[0.01] rounded-none">
                                     <div className="w-2 h-2 bg-orange-600 mb-4" />
                                     <h3 className="font-bold mb-1 text-sm">{feature.title}</h3>
                                     <p className="text-xs text-white/40">{feature.desc}</p>
@@ -168,7 +168,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
                         <ContactForm city={cityName} service={service.title} />
 
                         {/* Metrics */}
-                        <div className="p-6 border border-white/10 bg-white/[0.02] rounded-sm">
+                        <div className="p-6 border border-white/5 bg-white/[0.01] rounded-none">
                             <h3 className="text-xs font-mono text-orange-500 uppercase tracking-widest mb-4">Nøkkeltall</h3>
                             <div className="space-y-4">
                                 {[
@@ -188,7 +188,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
             </section>
 
             {/* Related Services — Interlinking */}
-            <section className="max-w-4xl mx-auto px-6 md:px-20 py-16 border-t border-white/10">
+            <section className="max-w-4xl mx-auto px-6 md:px-20 py-16 border-t border-white/5">
                 <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
                     <span className="w-8 h-[2px] bg-orange-600" />
                     Andre tjenester i <span className="text-orange-500">{cityName}</span>
@@ -198,7 +198,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
                         <Link
                             key={s.id}
                             href={`/${city}/${s.id}`}
-                            className="group p-6 border border-white/10 bg-white/[0.02] hover:border-orange-500 rounded-sm transition-all duration-300"
+                            className="group relative p-6 border border-white/5 bg-white/[0.01] hover:border-orange-500/50 hover:bg-orange-500/[0.02] rounded-none transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,95,0,0.1)]"
                         >
                             <span className="text-[10px] font-mono text-orange-500 uppercase tracking-widest">
                                 {s.vakt ? '● VAKT' : '◆ PROSJEKT'}
@@ -211,7 +211,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
             </section>
 
             {/* Other Cities */}
-            <section className="max-w-4xl mx-auto px-6 md:px-20 py-16 border-t border-white/10">
+            <section className="max-w-4xl mx-auto px-6 md:px-20 py-16 border-t border-white/5">
                 <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
                     <span className="w-8 h-[2px] bg-orange-600" />
                     {service.title} i andre byer
@@ -221,7 +221,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
                         <Link
                             key={c}
                             href={`/${c}/${serviceId}`}
-                            className="px-5 py-2.5 border border-white/10 text-sm text-white/50 hover:border-orange-500 hover:text-white rounded-sm transition-all font-bold uppercase tracking-wider"
+                            className="px-5 py-2.5 border border-white/5 text-sm text-white/50 hover:border-orange-500/50 hover:bg-orange-500/[0.02] hover:text-white rounded-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,95,0,0.1)] font-bold uppercase tracking-wider"
                         >
                             {cityNames[c]}
                         </Link>

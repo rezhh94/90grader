@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter_Tight, JetBrains_Mono } from 'next/font/google';
+import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { VaktCTA } from '@/components/VaktCTA';
 import './globals.css';
 
-const interTight = Inter_Tight({
+const spaceGrotesk = Space_Grotesk({
   variable: '--font-sans',
   subsets: ['latin'],
 });
@@ -29,11 +29,19 @@ export default function RootLayout({
   return (
     <html lang="no" className="scroll-smooth">
       <body
-        className={`${interTight.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#0A0A0A] text-white`}
+        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#030303] text-white selection:bg-brand-orange selection:text-black min-h-screen`}
       >
-        <Header />
-        <main className="pt-16">{children}</main>
-        <Footer />
+        {/* Blueprint Grid Background Pattern */}
+        <div className="fixed inset-0 pointer-events-none z-0">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)]"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:8px_8px] opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)]"></div>
+        </div>
+
+        <div className="relative z-10 flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-1 pt-16">{children}</main>
+          <Footer />
+        </div>
         <VaktCTA />
       </body>
     </html>

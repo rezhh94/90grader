@@ -1,13 +1,34 @@
 import { NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
+
+// Initialize Supabase client
+// Note: If no URL/Key is provided in .env, this will throw, so we catch it
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
 export async function POST(req: Request) {
     try {
         const leadData = await req.json();
 
         // 1. LOGGFØRING (Ditt bevis for fakturering)
-        // Simulated database save - replace with actual Supabase/Firebase call later
         const leadLogId = `lead_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-        console.log(`[LEAD SYSTEM] Saved lead to database:`, { id: leadLogId, ...leadData });
+        console.log(`[LEAD SYSTEM] Processing lead:`, { id: leadLogId, ...leadData });
+
+        if (supabase) {
+            try {
+                const { error } = await supabase
+                    .from('leads')
+                    .insert([{ id: leadLogId, data: leadData, created_at: new Date().toISOString() }]);
+
+                if (error) console.error('[SUPABASE ERROR] Failed to save lead:', error.message);
+                else console.log(`[SUPABASE] Successfully saved lead ${leadLogId}`);
+            } catch (dbError) {
+                console.error('[SUPABASE CATCH BLOCK] DB error:', dbError);
+            }
+        } else {
+            console.warn('[SUPABASE] Missing env variables. Skipping DB insert.');
+        }
 
         // 2. THE MASTER SWITCH (Din kontroll)
         // In production, these should be in .env.local

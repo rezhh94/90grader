@@ -10,15 +10,15 @@ export const BentoGrid = ({ items }: { items: Service[] }) => (
                 href={`/oslo/${s.id}`}
                 key={s.id}
                 className={`
-          group relative overflow-hidden p-8 rounded-sm
-          border border-white/10 bg-white/[0.03]
-          hover:border-orange-500 transition-all duration-500
+          group relative overflow-hidden p-8 rounded-none
+          border border-white/5 bg-white/[0.01]
+          hover:border-orange-500/50 hover:bg-orange-500/[0.02] hover:shadow-[0_0_30px_rgba(255,95,0,0.1)] transition-all duration-700
           flex flex-col justify-between
           ${i === 0 || i === 3 ? 'md:col-span-2' : ''}
         `}
             >
                 {/* Glow on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-600/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
                 <div className="relative z-10">
                     <span className="inline-block text-[10px] font-mono text-orange-500 uppercase tracking-[0.25em]">

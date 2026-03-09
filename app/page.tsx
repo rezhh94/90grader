@@ -4,9 +4,9 @@ import { services, cities, cityNames } from '@/lib/data';
 
 export default function HomePage() {
   return (
-    <main className="bg-[#0A0A0A] text-white min-h-screen">
+    <main className="text-white min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center px-6 md:px-20 border-b border-white/10">
+      <section className="relative h-[80vh] flex items-center px-6 md:px-20 border-b border-white/5">
         <div className="z-10 max-w-4xl">
           <span className="text-orange-500 font-mono tracking-widest uppercase mb-4 block text-sm">
             Etablert Autoritet i Stor-Oslo
@@ -35,12 +35,11 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-        {/* Grid background */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,95,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,95,0,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
+        {/* Grid background - removed as we use global layout grid now */}
       </section>
 
       {/* Metrics Strip */}
-      <section className="px-6 md:px-20 py-12 border-b border-white/10">
+      <section className="px-6 md:px-20 py-12 border-b border-white/5 bg-gradient-to-r from-transparent via-white/[0.01] to-transparent">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             { value: '24/7', label: 'Vakttelefon' },
@@ -66,7 +65,7 @@ export default function HomePage() {
       </section>
 
       {/* By-velger for PSO Dominans */}
-      <section id="byer" className="py-16 px-6 md:px-20 border-t border-white/10">
+      <section id="byer" className="py-16 px-6 md:px-20 border-t border-white/5">
         <h2 className="text-3xl font-bold mb-12 flex items-center gap-4">
           <span className="w-12 h-[2px] bg-orange-600" />
           Vi Dekker Hele Regionen
@@ -76,7 +75,7 @@ export default function HomePage() {
             <Link
               key={city}
               href={`/${city}/${services[0].id}`}
-              className="group p-6 border border-white/10 bg-white/[0.02] hover:border-orange-500 rounded-sm transition-all duration-300"
+              className="group relative p-6 border border-white/5 bg-white/[0.01] hover:border-orange-500/50 hover:bg-orange-500/[0.02] rounded-none transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,95,0,0.1)]"
             >
               <div className="flex items-center justify-between">
                 <div>

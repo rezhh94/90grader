@@ -36,13 +36,15 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
                 body: JSON.stringify(data),
             });
 
-            if (response.ok) {
+            const result = await response.json();
+
+            if (response.ok && result.success) {
                 setStatus('success');
                 e.currentTarget.reset();
             } else {
                 setStatus('error');
             }
-        } catch {
+        } catch (error) {
             setStatus('error');
         } finally {
             setIsSubmitting(false);
