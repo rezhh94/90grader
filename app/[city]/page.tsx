@@ -1,9 +1,5 @@
 import React from 'react';
-import { HeroSection } from '@/components/design/HeroSection';
-import { FeatureCards } from '@/components/design/FeatureCards';
-import { ValuesSection } from '@/components/design/ValuesSection';
-import { ServicesSection } from '@/components/design/ServicesSection';
-import { ContactSection } from '@/components/design/ContactSection';
+import { CityServiceClient } from '@/components/design/CityServiceClient';
 import { cities, cityNames, services } from '@/lib/data';
 import Link from 'next/link';
 
@@ -62,16 +58,12 @@ export default async function CityPage({ params }: PageProps) {
     };
 
     return (
-        <main className="min-h-screen bg-[#181618] text-[#e6e5de] font-sans selection:bg-[#2eff9b] selection:text-[#181618]">
+        <main className="min-h-screen bg-[#050505] text-[#e6e5de] font-sans selection:bg-[#2eff9b] selection:text-[#181618]">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
-            <HeroSection />
-            <FeatureCards />
-            <ValuesSection />
-            <ServicesSection />
-            <ContactSection />
+            <CityServiceClient cityName={cityName} />
             
             {/* Nærhets-matrisen - Interlinking */}
             <section className="max-w-7xl mx-auto px-6 py-24 border-t border-[#e6e5de]/5">

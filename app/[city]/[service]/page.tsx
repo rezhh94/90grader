@@ -19,7 +19,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const { city, service: serviceId } = await params;
+    const p = await params;
+    const { city, service: serviceId } = p;
     const service = services.find((s) => s.id === serviceId);
     const cityName = cityNames[city];
 
@@ -41,7 +42,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ServiceCityPage({ params }: PageProps) {
-    const { city, service: serviceId } = await params;
+    const p = await params;
+    const { city, service: serviceId } = p;
     const service = services.find((s) => s.id === serviceId);
     const cityName = cityNames[city];
 
@@ -68,166 +70,141 @@ export default async function ServiceCityPage({ params }: PageProps) {
     };
 
     return (
-        <div className="text-[#e6e5de] min-h-screen">
+        <main className="min-h-screen bg-[#181618] text-[#e6e5de] font-sans pb-24">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
 
-            {/* Hero */}
-            <section className="relative pt-24 pb-16 px-6 md:px-20 border-b border-[#e6e5de]/5">
-                {/* Hero grid removed, relying on root layout grid */}
+            {/* 1. PREMIUM SUB-HERO (Sentrert & Ren) */}
+            <section className="px-6 py-24 border-b border-white/5 bg-white/[0.01]">
+                <div className="max-w-4xl mx-auto text-center">
+                    <div className="inline-block px-3 py-1 border border-[#2eff9b]/20 text-[#2eff9b] font-mono text-[10px] uppercase tracking-[0.3em] mb-8 bg-[#2eff9b]/5 rounded-sm">
+                        {service.vakt ? 'AKUTT BEREDSKAP' : 'SPESIALISTPROSJEKT'} • {cityName}
+                    </div>
+                    <h1 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.9] mb-8">
+                        {service.title} <br />
+                        <span className="text-[#e6e5de]/20 italic">i {cityName}</span>
+                    </h1>
+                    <a href="#bestill" className="font-mono text-xs uppercase tracking-widest text-[#2eff9b] hover:opacity-70 transition-opacity">
+                        Gå direkte til forespørsel ↓
+                    </a>
+                </div>
+            </section>
 
-                <div className="relative z-10 max-w-4xl mx-auto">
-                    {/* Breadcrumb */}
-                    <nav className="flex items-center gap-2 text-xs font-mono text-[#e6e5de]/30 mb-8 uppercase tracking-widest">
-                        <Link href="/" className="hover:text-[#e6e5de] transition-colors">Hjem</Link>
-                        <span>/</span>
-                        <Link href={`/${city}/${services[0].id}`} className="hover:text-[#e6e5de] transition-colors">{cityName}</Link>
-                        <span>/</span>
-                        <span className="text-[#2eff9b]">{service.title}</span>
-                    </nav>
+            {/* 2. INNHOLDS-SECTION (Sentrert max-w-4xl for maksimal lesbarhet) */}
+            <section className="px-6 py-24">
+                <div className="max-w-4xl mx-auto space-y-20">
 
-                    <div className="flex items-center gap-3 mb-6">
-                        <span className={`w-2 h-2 rounded-full ${service.vakt ? 'bg-green-500 animate-pulse' : 'bg-[#2eff9b]'}`} />
-                        <span className="text-xs font-mono text-[#e6e5de]/50 uppercase tracking-widest">
-                            {service.vakt ? 'Vakt-tjeneste — 24/7' : 'Prosjekt-tjeneste'}
-                        </span>
+                    {/* BILDE-BOKS (Visuelt Anker) */}
+                    <div className="relative aspect-video bg-white/5 border border-white/10 rounded-2xl overflow-hidden group">
+                        <div className="absolute inset-0 bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-1000"
+                            style={{ backgroundImage: `url('/images/services/${service.id}.jpg')` }} />
+                        <div className="absolute top-6 left-6 bg-[#181618]/80 backdrop-blur-md border border-[#2eff9b]/30 px-4 py-2 rounded font-mono text-[10px] text-[#2eff9b]">
+                            PROSJEKTKODE: 90G-{city.toUpperCase()}-{serviceId.toUpperCase()}
+                        </div>
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
-                        {service.title}{' '}
-                        <span className="text-[#2eff9b]">i {cityName}</span>
-                    </h1>
+                    {/* TEKSTLIG GJENNOMGANG */}
+                    <div className="space-y-12">
+                        <div className="flex items-center gap-6">
+                            <div className="w-16 h-[1px] bg-[#2eff9b]" />
+                            <h2 className="text-sm font-mono font-bold uppercase tracking-[0.3em] text-[#2eff9b]">Prosjektbeskrivelse</h2>
+                        </div>
+                        <div className="text-xl md:text-2xl leading-relaxed text-[#e6e5de]/80 font-light space-y-8">
+                            <p>{service.longDesc}</p>
+                        </div>
+                    </div>
 
-                    <p className="text-xl md:text-2xl text-[#e6e5de]/60 leading-relaxed mb-10 max-w-2xl">
-                        {service.longDesc}
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row gap-4">
-                        <a
-                            href="tel:+4790000000"
-                            className="bg-[#2eff9b] hover:bg-[#2eff9b]/80 px-10 py-4 font-black text-sm tracking-wider rounded-sm transition-all inline-flex items-center gap-2"
-                        >
-                            <span className="w-2.5 h-2.5 rounded-full bg-[#e6e5de] animate-pulse" />
-                            RING FOR BEFARING
-                        </a>
-                        <a
-                            href="mailto:post@90grader.no"
-                            className="border border-[#e6e5de]/20 hover:bg-[#e6e5de]/5 px-10 py-4 font-bold text-sm tracking-wider rounded-sm transition-all text-center"
-                        >
-                            SEND FORESPØRSEL
-                        </a>
+                    {/* TEKNISKE SPESIFIKASJONER (USP-Grid) */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 border-t border-white/5">
+                        {[
+                            { label: 'Standard', val: '90° Presisjon' },
+                            { label: 'Region', val: cityName },
+                            { label: 'Status', val: 'Aktiv' }
+                        ].map((item) => (
+                            <div key={item.label} className="p-6 bg-white/5 border border-white/10 rounded-xl">
+                                <p className="font-mono text-[9px] text-[#2eff9b] uppercase tracking-widest mb-2">{item.label}</p>
+                                <p className="font-bold text-sm uppercase">{item.val}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Service Details */}
-            <section className="max-w-4xl mx-auto px-6 md:px-20 py-16">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Main Content */}
-                    <div className="lg:col-span-2 space-y-8">
-                        <div className="p-8 border border-[#e6e5de]/5 bg-[#e6e5de]/[0.01] rounded-none">
-                            <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                                <span className="w-8 h-[2px] bg-[#2eff9b]" />
-                                Om tjenesten
-                            </h2>
-                            <div className="space-y-4 text-[#e6e5de]/60 leading-relaxed">
-                                <p>
-                                    90 Grader leverer profesjonell {service.title.toLowerCase()} i {cityName} og omegn.
-                                    Med over 15 års erfaring og et dedikert team av fagfolk, garanterer vi kvalitet i hvert eneste prosjekt.
-                                </p>
-                                <p>
-                                    {service.vakt
-                                        ? `Vår vakttelefon er tilgjengelig 24/7 for akutte oppdrag i ${cityName}. Vi rykker ut raskt og effektivt med moderne utstyr.`
-                                        : `Vi planlegger og gjennomfører prosjekter i ${cityName} med fokus på tidslinjer, budsjett og kvalitet. Fra første befaring til ferdigstillelse.`}
-                                </p>
-                            </div>
-                        </div>
+            {/* 3. "THE ANCHOR" - FULLBREDDE KONTAKTSESJON (Lead-motoren) */}
+            <section id="bestill" className="bg-[#1c1c1e] px-6 py-24 md:py-32 border-t border-[#2eff9b]/10 relative overflow-hidden">
+                {/* Blueprint dekorasjon som kun synes i bunnen */}
+                <div className="absolute inset-0 bg-[url('/blueprint-grid.svg')] opacity-[0.02] pointer-events-none" />
 
-                        {/* Features grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {[
-                                { title: 'Kvalitetssikret', desc: 'Alle oppdrag etter gjeldende standarder.' },
-                                { title: 'Lokalkjent', desc: `Inngående kjennskap til ${cityName}.` },
-                                { title: 'Erfarne Fagfolk', desc: 'Sertifiserte og kvalifiserte håndverkere.' },
-                                { title: 'Rask Respons', desc: service.vakt ? 'Utrykning innen kort tid.' : 'Rask oppstart etter avtale.' },
-                            ].map((feature) => (
-                                <div key={feature.title} className="p-6 border border-[#e6e5de]/5 bg-[#e6e5de]/[0.01] rounded-none">
-                                    <div className="w-2 h-2 bg-[#2eff9b] mb-4" />
-                                    <h3 className="font-bold mb-1 text-sm">{feature.title}</h3>
-                                    <p className="text-xs text-[#e6e5de]/40">{feature.desc}</p>
-                                </div>
-                            ))}
-                        </div>
+                <div className="max-w-4xl mx-auto relative z-10">
+                    <div className="text-center mb-16 space-y-4">
+                        <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter">
+                            Start ditt prosjekt <span className="text-[#2eff9b]">i {cityName}</span>
+                        </h2>
+                        <p className="text-[#e6e5de]/50 font-mono text-sm uppercase tracking-widest">
+                            Svarer normalt innen 2 timer • {service.vakt ? '24/7 Vakttelefon aktiv' : 'Hurtig respons'}
+                        </p>
                     </div>
 
-                    {/* Sidebar */}
-                    <div className="space-y-6">
-                        {/* The Switch - Contact Form */}
-                        <ContactForm city={cityName} service={service.title} />
+                    <div className="bg-[#181618] border border-white/10 p-8 md:p-16 rounded-[2.5rem] shadow-3xl">
+                        <ContactForm service={service.title} city={cityName} />
 
-                        {/* Metrics */}
-                        <div className="p-6 border border-[#e6e5de]/5 bg-[#e6e5de]/[0.01] rounded-none">
-                            <h3 className="text-xs font-mono text-[#2eff9b] uppercase tracking-widest mb-4">Nøkkeltall</h3>
-                            <div className="space-y-4">
-                                {[
-                                    { label: 'Responstid', value: service.vakt ? '< 2t' : '< 48t' },
-                                    { label: 'Garanti', value: '100%' },
-                                    { label: 'Dekning', value: cityName },
-                                ].map((metric) => (
-                                    <div key={metric.label} className="flex items-center justify-between border-b border-[#e6e5de]/10 pb-3 last:border-0">
-                                        <span className="text-xs text-[#e6e5de]/40">{metric.label}</span>
-                                        <span className="font-mono font-black text-[#2eff9b]">{metric.value}</span>
-                                    </div>
-                                ))}
-                            </div>
+                        <div className="mt-12 pt-12 border-t border-white/5 flex flex-col items-center">
+                            <a href="tel:+4790000000" className="group flex items-center gap-6 text-2xl md:text-4xl font-black hover:text-[#2eff9b] transition-colors">
+                                <span className="text-xs font-mono font-normal text-[#2eff9b] group-hover:animate-pulse uppercase tracking-[0.4em]">{service.vakt ? 'VAKT:' : 'RING OSS:'}</span>
+                                +47 900 00 000
+                            </a>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Related Services — Interlinking */}
-            <section className="max-w-4xl mx-auto px-6 md:px-20 py-16 border-t border-[#e6e5de]/5">
-                <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                    <span className="w-8 h-[2px] bg-[#2eff9b]" />
-                    Andre tjenester i <span className="text-[#2eff9b]">{cityName}</span>
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {otherServices.map((s) => (
-                        <Link
-                            key={s.id}
-                            href={`/${city}/${s.id}`}
-                            className="group relative p-6 border border-[#e6e5de]/5 bg-[#e6e5de]/[0.01] hover:border-[#2eff9b]/50 hover:bg-[#2eff9b]/[0.02] rounded-none transition-all duration-500 hover:shadow-[0_0_30px_rgba(46,255,155,0.1)]"
-                        >
-                            <span className="text-[10px] font-mono text-[#2eff9b] uppercase tracking-widest">
-                                {s.vakt ? '● VAKT' : '◆ PROSJEKT'}
-                            </span>
-                            <h3 className="text-lg font-bold mt-2 group-hover:text-[#2eff9b] transition-colors">{s.title}</h3>
-                            <p className="text-xs text-[#e6e5de]/40 mt-1">{s.desc}</p>
-                        </Link>
-                    ))}
+            <section className="px-6 py-16 border-t border-white/10">
+                <div className="max-w-6xl mx-auto">
+                    <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <span className="w-8 h-[2px] bg-[#2eff9b]" />
+                        Andre tjenester i <span className="text-[#2eff9b]">{cityName}</span>
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {otherServices.map((s) => (
+                            <Link
+                                key={s.id}
+                                href={`/${city}/${s.id}`}
+                                className="group relative p-6 border border-[#e6e5de]/5 bg-[#e6e5de]/[0.01] hover:border-[#2eff9b]/50 hover:bg-[#2eff9b]/[0.02] rounded-none transition-all duration-500 hover:shadow-[0_0_30px_rgba(46,255,155,0.1)]"
+                            >
+                                <span className="text-[10px] font-mono text-[#2eff9b] uppercase tracking-widest">
+                                    {s.vakt ? '● VAKT' : '◆ PROSJEKT'}
+                                </span>
+                                <h3 className="text-lg font-bold mt-2 group-hover:text-[#2eff9b] transition-colors">{s.title}</h3>
+                                <p className="text-xs text-[#e6e5de]/40 mt-1">{s.desc}</p>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </section>
 
             {/* Other Cities */}
-            <section className="max-w-4xl mx-auto px-6 md:px-20 py-16 border-t border-[#e6e5de]/5">
-                <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                    <span className="w-8 h-[2px] bg-[#2eff9b]" />
-                    {service.title} i andre byer
-                </h2>
-                <div className="flex flex-wrap gap-3">
-                    {cities.filter((c) => c !== city).map((c) => (
-                        <Link
-                            key={c}
-                            href={`/${c}/${serviceId}`}
-                            className="px-5 py-2.5 border border-[#e6e5de]/5 text-sm text-[#e6e5de]/50 hover:border-[#2eff9b]/50 hover:bg-[#2eff9b]/[0.02] hover:text-[#e6e5de] rounded-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(46,255,155,0.1)] font-bold uppercase tracking-wider"
-                        >
-                            {cityNames[c]}
-                        </Link>
-                    ))}
+            <section className="px-6 py-16 border-t border-white/10">
+                <div className="max-w-6xl mx-auto">
+                    <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <span className="w-8 h-[2px] bg-[#2eff9b]" />
+                        {service.title} i andre byer
+                    </h2>
+                    <div className="flex flex-wrap gap-3">
+                        {cities.filter((c) => c !== city).map((c) => (
+                            <Link
+                                key={c}
+                                href={`/${c}/${serviceId}`}
+                                className="px-5 py-2.5 border border-[#e6e5de]/5 text-sm text-[#e6e5de]/50 hover:border-[#2eff9b]/50 hover:bg-[#2eff9b]/[0.02] hover:text-[#e6e5de] rounded-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(46,255,155,0.1)] font-bold uppercase tracking-wider"
+                            >
+                                {cityNames[c]}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </section>
-        </div>
+        </main>
     );
 }
