@@ -55,7 +55,7 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
     return (
         <div className="relative p-1 rounded-sm bg-gradient-to-br from-white/10 to-transparent">
             {/* Glow effect */}
-            <div className="absolute inset-0 bg-orange-600/10 blur-xl rounded-sm" />
+            <div className="absolute inset-0 bg-[#2eff9b]/10 blur-xl rounded-sm" />
 
             <div className="relative p-8 bg-[#0A0A0A]/90 backdrop-blur-xl border border-white/5 rounded-sm overflow-hidden">
 
@@ -64,10 +64,10 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
 
                 <div className="relative z-10 mb-8">
                     <h3 className="text-xl font-bold flex items-center gap-3">
-                        <span className="w-6 h-[2px] bg-orange-600" />
+                        <span className="w-6 h-[2px] bg-[#2eff9b]" />
                         Forespørsel for {city}
                     </h3>
-                    <p className="text-sm text-white/50 mt-2">
+                    <p className="text-sm text-[#e6e5de]/50 mt-2">
                         Fyll ut skjemaet under for et uforpliktende tilbud på {service.toLowerCase()}. Vi svarer raskt.
                     </p>
                 </div>
@@ -75,7 +75,7 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
                 <form onSubmit={handleSubmit} className="relative z-10 space-y-5">
                     <div className="space-y-4">
                         <div>
-                            <label htmlFor="name" className="block text-xs font-mono text-orange-500 uppercase tracking-widest mb-1.5 ml-1">
+                            <label htmlFor="name" className="block text-xs font-mono text-[#2eff9b] uppercase tracking-widest mb-1.5 ml-1">
                                 Navn / Firma
                             </label>
                             <input
@@ -84,14 +84,14 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
                                 name="name"
                                 type="text"
                                 disabled={isSubmitting}
-                                className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-orange-500 focus:bg-white/10 transition-all disabled:opacity-50"
+                                className="w-full bg-[#e6e5de]/5 border border-[#e6e5de]/10 rounded-sm px-4 py-3 text-[#e6e5de] placeholder:text-[#e6e5de]/20 focus:outline-none focus:border-[#2eff9b] focus:bg-white/10 transition-all disabled:opacity-50"
                                 placeholder="Ola Nordmann"
                             />
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label htmlFor="phone" className="block text-xs font-mono text-orange-500 uppercase tracking-widest mb-1.5 ml-1">
+                                <label htmlFor="phone" className="block text-xs font-mono text-[#2eff9b] uppercase tracking-widest mb-1.5 ml-1">
                                     Telefon
                                 </label>
                                 <input
@@ -100,12 +100,12 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
                                     name="phone"
                                     type="tel"
                                     disabled={isSubmitting}
-                                    className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-orange-500 focus:bg-white/10 transition-all disabled:opacity-50"
+                                    className="w-full bg-[#e6e5de]/5 border border-[#e6e5de]/10 rounded-sm px-4 py-3 text-[#e6e5de] placeholder:text-[#e6e5de]/20 focus:outline-none focus:border-[#2eff9b] focus:bg-white/10 transition-all disabled:opacity-50"
                                     placeholder="+47 000 00 000"
                                 />
                             </div>
                             <div>
-                                <label htmlFor="email" className="block text-xs font-mono text-orange-500 uppercase tracking-widest mb-1.5 ml-1">
+                                <label htmlFor="email" className="block text-xs font-mono text-[#2eff9b] uppercase tracking-widest mb-1.5 ml-1">
                                     E-post
                                 </label>
                                 <input
@@ -114,14 +114,14 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
                                     name="email"
                                     type="email"
                                     disabled={isSubmitting}
-                                    className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-orange-500 focus:bg-white/10 transition-all disabled:opacity-50"
+                                    className="w-full bg-[#e6e5de]/5 border border-[#e6e5de]/10 rounded-sm px-4 py-3 text-[#e6e5de] placeholder:text-[#e6e5de]/20 focus:outline-none focus:border-[#2eff9b] focus:bg-white/10 transition-all disabled:opacity-50"
                                     placeholder="post@firma.no"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label htmlFor="description" className="block text-xs font-mono text-orange-500 uppercase tracking-widest mb-1.5 ml-1">
+                            <label htmlFor="description" className="block text-xs font-mono text-[#2eff9b] uppercase tracking-widest mb-1.5 ml-1">
                                 Beskrivelse av behov
                             </label>
                             <textarea
@@ -130,7 +130,7 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
                                 name="description"
                                 rows={4}
                                 disabled={isSubmitting}
-                                className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-orange-500 focus:bg-white/10 transition-all resize-none disabled:opacity-50"
+                                className="w-full bg-[#e6e5de]/5 border border-[#e6e5de]/10 rounded-sm px-4 py-3 text-[#e6e5de] placeholder:text-[#e6e5de]/20 focus:outline-none focus:border-[#2eff9b] focus:bg-white/10 transition-all resize-none disabled:opacity-50"
                                 placeholder={`Beskriv hva du trenger hjelp med i ${city}...`}
                             />
                         </div>
@@ -139,7 +139,7 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
                     <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="group relative w-full flex items-center justify-center gap-3 bg-orange-600 hover:bg-orange-700 disabled:bg-white/10 disabled:text-white/30 text-white px-8 py-4 font-black text-sm tracking-wider rounded-sm transition-all overflow-hidden"
+                        className="group relative w-full flex items-center justify-center gap-3 bg-[#2eff9b] hover:bg-[#2eff9b]/80 disabled:bg-white/10 disabled:text-[#e6e5de]/30 text-[#e6e5de] px-8 py-4 font-black text-sm tracking-wider rounded-sm transition-all overflow-hidden"
                     >
                         {/* Shimmer effect inside button */}
                         <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -168,12 +168,12 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
                                 <CheckCircle2 className="w-8 h-8 text-green-500" />
                             </div>
                             <h4 className="text-2xl font-bold mb-2">Forespørsel Sendt</h4>
-                            <p className="text-white/60 mb-8 max-w-sm">
+                            <p className="text-[#e6e5de]/60 mb-8 max-w-sm">
                                 Takk for din henvendelse. Vi har mottatt informasjonen og vil ta kontakt med deg svært snart.
                             </p>
                             <button
                                 onClick={() => setStatus('idle')}
-                                className="text-sm font-bold text-orange-500 hover:text-orange-400 border-b border-orange-500 pb-1 transition-colors"
+                                className="text-sm font-bold text-[#2eff9b] hover:text-orange-400 border-b border-[#2eff9b] pb-1 transition-colors"
                             >
                                 Send ny forespørsel
                             </button>

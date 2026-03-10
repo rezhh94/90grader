@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
+import { Footer } from '@/components/design/Footer';
 import { VaktCTA } from '@/components/VaktCTA';
 import './globals.css';
 
@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="no" className="scroll-smooth">
       <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#030303] text-white selection:bg-brand-orange selection:text-black min-h-screen`}
+        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#181618] text-[#e6e5de] selection:bg-[#2eff9b] selection:text-[#181618] min-h-screen`}
       >
         {/* Blueprint Grid Background Pattern */}
         <div className="fixed inset-0 pointer-events-none z-0">
