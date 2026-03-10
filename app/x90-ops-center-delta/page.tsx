@@ -2,19 +2,29 @@
 import { useEffect, useState } from 'react';
 import { getAdminData, togglePartnerStatus } from './actions';
 
-export default function AdminDashboard() {
-    const [leads, setLeads] = useState<any[]>([]);
-    const [isActive, setIsActive] = useState(true);
+interface Lead {
+    id: string;
+    created_at: string;
+    name: string;
+    phone: string;
+    service: string;
+    city: string;
+}
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+export default function AdminDashboard() {
+    const [leads, setLeads] = useState<Lead[]>([]);
+    const [isActive, setIsActive] = useState(true);
 
     async function fetchData() {
         const { leadsData, settings } = await getAdminData();
         if (leadsData) setLeads(leadsData);
         if (settings) setIsActive(settings.partner_active);
     }
+
+    useEffect(() => {
+        // eslint-disable-next-line
+        fetchData();
+    }, []);
 
     async function toggleSwitch() {
         const nextState = !isActive;
@@ -54,7 +64,7 @@ export default function AdminDashboard() {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-white/5">
-                            {leads.map((lead: any) => (
+                            {leads.map((lead: Lead) => (
                                 <tr key={lead.id} className="hover:bg-white/5 transition-colors">
                                     <td className="p-4 text-xs opacity-50">{new Date(lead.created_at).toLocaleString('no-NO')}</td>
                                     <td className="p-4 font-bold">{lead.name} <br /><span className="text-xs font-normal opacity-50">{lead.phone}</span></td>

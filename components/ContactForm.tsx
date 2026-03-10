@@ -45,7 +45,7 @@ export const ContactForm = ({ city, service }: ContactFormProps) => {
             } else {
                 setStatus('error');
             }
-        } catch (error) {
+        } catch {
             setStatus('error');
         } finally {
             setIsSubmitting(false);

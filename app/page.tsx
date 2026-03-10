@@ -2,6 +2,7 @@ import React from 'react';
 import { HeroSection } from '@/components/design/HeroSection';
 import { TrustMarquee } from '@/components/design/TrustMarquee';
 import { ServicesSection } from '@/components/design/ServicesSection';
+import { KnowledgePreview } from '@/components/design/KnowledgePreview';
 import { FeatureCards } from '@/components/design/FeatureCards';
 import { ValuesSection } from '@/components/design/ValuesSection';
 import { ContactSection } from '@/components/design/ContactSection';
@@ -13,6 +14,7 @@ export default function DesignTestPage() {
             <TrustMarquee />
             <FeatureCards />
             <ServicesSection />
+            <KnowledgePreview />
             <ValuesSection />
             <ContactSection />
         </main>

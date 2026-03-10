@@ -66,7 +66,7 @@ export default function FagArkivPage() {
 
         {/* Content list */}
         <div className="grid grid-cols-1 gap-4">
-            {articles.map((article, index) => (
+            {articles.map((article) => (
                 <Link key={article.id} href={`/fag-arkiv/${article.id}`} className="group block">
                     <article className="border border-white/10 bg-white/[0.02] p-8 hover:bg-white/[0.04] hover:border-white/20 transition-all duration-300 relative overflow-hidden flex flex-col md:flex-row gap-8 justify-between">
                         

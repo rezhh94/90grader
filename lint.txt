@@ -1,0 +1,50 @@
+
+> 90grader@0.1.0 lint
+> eslint
+
+
+/Users/reezy/Desktop/90grader/app/fag-arkiv/[slug]/page.tsx
+   4:36  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  92:48  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/reezy/Desktop/90grader/app/fag-arkiv/page.tsx
+  69:37  warning  'index' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/reezy/Desktop/90grader/app/x90-ops-center-delta/page.tsx
+   6:40  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-explicit-any
+  10:9   error  Error: Cannot access variable before it is declared
+
+`fetchData` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/reezy/Desktop/90grader/app/x90-ops-center-delta/page.tsx:10:9
+   8 |
+   9 |     useEffect(() => {
+> 10 |         fetchData();
+     |         ^^^^^^^^^ `fetchData` accessed before it is declared
+  11 |     }, []);
+  12 |
+  13 |     async function fetchData() {
+
+/Users/reezy/Desktop/90grader/app/x90-ops-center-delta/page.tsx:13:5
+  11 |     }, []);
+  12 |
+> 13 |     async function fetchData() {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 14 |         const { leadsData, settings } = await getAdminData();
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 15 |         if (leadsData) setLeads(leadsData);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 16 |         if (settings) setIsActive(settings.partner_active);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 17 |     }
+     | ^^^^^^ `fetchData` is declared here
+  18 |
+  19 |     async function toggleSwitch() {
+  20 |         const nextState = !isActive;  react-hooks/immutability
+  57:47  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-explicit-any
+
+/Users/reezy/Desktop/90grader/components/ContactForm.tsx
+  48:18  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 7 problems (5 errors, 2 warnings)
+
