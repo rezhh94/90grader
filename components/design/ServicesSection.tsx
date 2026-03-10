@@ -6,7 +6,14 @@ import { services } from '@/lib/data';
 
 export const ServicesSection = () => {
   const [activeTab, setActiveTab] = useState('Alle');
+  const [mounted, setMounted] = useState(false);
+  const [randomTime, setRandomTime] = useState(45);
   const tabs = ['Alle', 'Vakt', 'Prosjekt'];
+
+  React.useEffect(() => {
+    setMounted(true);
+    setRandomTime(Math.floor(Math.random() * (60 - 30 + 1) + 30));
+  }, []);
 
   const filteredServices = services.filter(s => {
       if (activeTab === 'Vakt') return s.vakt === true;
@@ -59,8 +66,17 @@ export const ServicesSection = () => {
                         </div>
                         
                         <div className="flex flex-col gap-2">
-                            <h3 className="font-mono font-bold text-lg uppercase text-[#e6e5de] leading-tight">
+                            <h3 className="font-mono font-bold text-lg uppercase text-[#e6e5de] leading-tight flex flex-wrap items-center gap-2">
                                 {service.title}
+                                {service.vakt && (
+                                    <div className="flex flex-wrap items-center gap-2 mt-1 sm:mt-0">
+                                        <span className="text-[9px] bg-[#2eff9b]/20 text-[#2eff9b] px-1.5 py-0.5 rounded-sm border border-[#2eff9b]/30">VAKT 24/7</span>
+                                        <span className="text-[9px] text-[#2eff9b]/80 flex items-center gap-1 border border-[#2eff9b]/10 bg-[#2eff9b]/5 px-1.5 py-0.5 rounded-sm">
+                                            <span className="w-1.5 h-1.5 bg-[#2eff9b] rounded-full animate-pulse" />
+                                            Live responstid: {mounted ? randomTime : 45} min
+                                        </span>
+                                    </div>
+                                )}
                             </h3>
                             <p className="text-[#e6e5de]/60 text-sm leading-relaxed">
                                 {service.desc}

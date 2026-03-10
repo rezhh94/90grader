@@ -25,8 +25,9 @@ export const Footer = () => {
             Tjenester
           </div>
           {services.slice(0,5).map((s) => (
-            <Link key={s.id} href={`/oslo/${s.id}`} className="hover:opacity-60 transition-opacity text-sm uppercase">
-               {s.title}
+            <Link key={s.id} href={`/oslo/${s.id}`} className="hover:opacity-60 transition-opacity text-sm uppercase flex items-center gap-2">
+               <span>{s.title}</span>
+               {s.vakt && <span className="text-[8px] bg-[#2eff9b]/20 text-[#2eff9b] px-1 py-0.5 rounded-sm border border-[#2eff9b]/30">VAKT</span>}
             </Link>
           ))}
         </div>
