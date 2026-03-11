@@ -1,14 +1,14 @@
 import Link from 'next/link';
-import { services, cities, cityNames } from '@/lib/data';
+import { services, regions, cityNames } from '@/lib/data';
 
 export const Footer = () => {
   return (
     <footer className="bg-[#2eff9b] text-[#181618] font-mono px-6 py-16 md:py-24 mt-20">
       
       {/* Top right cut corner mimicking Component_12 */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 relative">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16 relative">
           
-        <div className="flex flex-col gap-6 lg:col-span-1">
+        <div className="flex flex-col gap-6 md:col-span-2 lg:col-span-2">
             <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-[#181618] flex items-center justify-center text-[#2eff9b] font-black text-sm rounded-sm shrink-0">
                     90
@@ -16,7 +16,7 @@ export const Footer = () => {
                 <span className="text-xl font-black font-sans tracking-tighter">90 GRADER</span>
             </div>
             <p className="text-sm opacity-80 max-w-sm">
-                Vi er en moderne og løsningsorientert bedrift som spesialiserer oss på montering, service og rehabilitering. 
+                Vi er en moderne og løsningsorientert bedrift som spesialiserer oss på montering, service og rehabilitering i Stor-Oslo og Viken.
             </p>
         </div>
 
@@ -34,13 +34,30 @@ export const Footer = () => {
 
         <div className="flex flex-col gap-4">
           <div className="bg-[#181618] text-[#2eff9b] px-3 py-1 font-bold uppercase text-xs inline-block w-fit mb-2">
-            Områder
+            Våre Områder
           </div>
-          {cities.slice(0,5).map((city) => (
-            <Link key={city} href={`/${city}/${services[0].id}`} className="hover:opacity-60 transition-opacity text-sm uppercase">
-               {cityNames[city]}
-            </Link>
-          ))}
+          <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+              <div className="space-y-2">
+                  <div className="font-bold text-[10px] uppercase opacity-60">Oslo Bydeler</div>
+                  {regions.oslo.slice(0,3).map(city => (
+                      <Link key={city} href={`/${city}/${services[0].id}`} className="block hover:opacity-60 transition-opacity text-sm uppercase">{cityNames[city]}</Link>
+                  ))}
+                  <div className="font-bold text-[10px] uppercase opacity-60 mt-4">Bærum & Asker</div>
+                  {regions.baerum_asker.slice(0,3).map(city => (
+                      <Link key={city} href={`/${city}/${services[0].id}`} className="block hover:opacity-60 transition-opacity text-sm uppercase">{cityNames[city]}</Link>
+                  ))}
+              </div>
+              <div className="space-y-2">
+                  <div className="font-bold text-[10px] uppercase opacity-60">Romerike</div>
+                  {regions.romerike.slice(0,3).map(city => (
+                      <Link key={city} href={`/${city}/${services[0].id}`} className="block hover:opacity-60 transition-opacity text-sm uppercase">{cityNames[city]}</Link>
+                  ))}
+                  <div className="font-bold text-[10px] uppercase opacity-60 mt-4">Follo</div>
+                  {regions.follo.slice(0,3).map(city => (
+                      <Link key={city} href={`/${city}/${services[0].id}`} className="block hover:opacity-60 transition-opacity text-sm uppercase">{cityNames[city]}</Link>
+                  ))}
+              </div>
+          </div>
         </div>
 
         <div className="flex flex-col gap-4">

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { services, cities, cityNames } from '@/lib/data';
+import { services, cities, cityNames, getServiceContent } from '@/lib/data';
 import { ContactForm } from '@/components/ContactForm';
 
 interface PageProps {
@@ -21,13 +21,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const p = await params;
     const { city, service: serviceId } = p;
-    const service = services.find((s) => s.id === serviceId);
-    const cityName = cityNames[city];
+    const content = getServiceContent(serviceId, city);
 
-    if (!service || !cityName) return {};
+    if (!content) return {};
 
-    const title = `${service.title} i ${cityName} | 90 Grader`;
-    const description = `${service.longDesc} Kontakt oss for ${service.vakt ? 'vaktservice' : 'prosjekter'} i ${cityName}-området.`;
+    const title = `${content.baseService.title} i ${content.cityName} | 90 Grader`;
+    const description = `${content.hook} Kontakt oss for ${content.baseService.vakt ? 'vaktservice' : 'prosjekter'} i ${content.cityName}-området.`;
 
     return {
         title,
@@ -44,28 +43,43 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ServiceCityPage({ params }: PageProps) {
     const p = await params;
     const { city, service: serviceId } = p;
-    const service = services.find((s) => s.id === serviceId);
-    const cityName = cityNames[city];
+    const content = getServiceContent(serviceId, city);
 
-    if (!service || !cityName) {
+    if (!content) {
         notFound();
     }
 
+    const { baseService: service, cityName, zone, hook, usp, faq, slug, coordinates } = content;
     const otherServices = services.filter((s) => s.id !== serviceId);
 
-    // JSON-LD for SGE/SEO
+    // JSON-LD for SGE/SEO med Hyper-lokal NAP-data
+    const schemaGeo = coordinates.split(', ') || ['59.9139', '10.7522']; // Fallback Oslo
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'Service',
         name: `${service.title} i ${cityName}`,
-        description: service.longDesc,
-        areaServed: { '@type': 'City', name: cityName },
+        description: hook,
+        areaServed: {
+            '@type': 'City',
+            name: cityName,
+            geo: {
+                '@type': 'GeoCoordinates',
+                latitude: schemaGeo[0],
+                longitude: schemaGeo[1]
+            }
+        },
         provider: {
             '@type': 'LocalBusiness',
             name: '90 Grader AS',
             telephone: '+4790000000',
             email: 'post@90grader.no',
             url: 'https://90grader.no',
+            address: {
+                '@type': 'PostalAddress',
+                addressLocality: cityName,
+                addressRegion: 'Viken/Oslo',
+                addressCountry: 'NO'
+            }
         },
     };
 
@@ -105,7 +119,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
                         </div>
                     </div>
 
-                    {/* TEKSTLIG GJENNOMGANG */}
+                    {/* TEKSTLIG GJENNOMGANG (Med Dynamisk Løsnings-Plikt) */}
                     <div className="space-y-12">
                         <div className="flex items-center gap-6">
                             <div className="w-16 h-[1px] bg-[#2eff9b]" />
@@ -113,21 +127,72 @@ export default async function ServiceCityPage({ params }: PageProps) {
                         </div>
                         <div className="text-xl md:text-2xl leading-relaxed text-[#e6e5de]/80 font-light space-y-8">
                             <p>{service.longDesc}</p>
+                            <div className="p-6 border-l-2 border-[#2eff9b] bg-[#2eff9b]/[0.02]">
+                                <h3 className="text-lg font-bold text-[#e6e5de] mb-2 uppercase font-mono text-sm tracking-widest">Lokal Ekspertise i {cityName}</h3>
+                                <p className="text-lg">{hook}</p>
+                            </div>
                         </div>
                     </div>
 
-                    {/* TEKNISKE SPESIFIKASJONER (USP-Grid) */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 border-t border-white/5">
-                        {[
-                            { label: 'Standard', val: '90° Presisjon' },
-                            { label: 'Region', val: cityName },
-                            { label: 'Status', val: 'Aktiv' }
-                        ].map((item) => (
-                            <div key={item.label} className="p-6 bg-white/5 border border-white/10 rounded-xl">
-                                <p className="font-mono text-[9px] text-[#2eff9b] uppercase tracking-widest mb-2">{item.label}</p>
-                                <p className="font-bold text-sm uppercase">{item.val}</p>
+                    {/* TEKNISKE SPESIFIKASJONER & ZONE */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-12 border-t border-white/5">
+                        <div className="grid grid-cols-2 gap-4">
+                            {[
+                                { label: 'Soneprofil', val: zone },
+                                { label: 'Region', val: cityName },
+                            ].map((item) => (
+                                <div key={item.label} className="p-6 bg-white/5 border border-white/10 rounded-xl">
+                                    <p className="font-mono text-[9px] text-[#2eff9b] uppercase tracking-widest mb-2">{item.label}</p>
+                                    <p className="font-bold text-sm uppercase">{item.val}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="p-6 bg-[#1c1c1e] border border-[#2eff9b]/20 rounded-xl relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#2eff9b]/5 blur-3xl -mr-16 -mt-16" />
+                            <h3 className="text-[#2eff9b] font-mono text-xs uppercase tracking-widest mb-4">Unik Sonefordel</h3>
+                            <div className="space-y-4">
+                                <p className="text-xl font-bold leading-tight text-[#e6e5de]">
+                                    {usp}
+                                </p>
+                                <div className="flex items-center gap-2 text-[#2eff9b] text-[10px] font-mono uppercase tracking-widest">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2eff9b] opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#2eff9b]"></span>
+                                    </span>
+                                    SGE Dominans Aktiv
+                                </div>
                             </div>
-                        ))}
+                        </div>
+                    </div>
+
+                    {/* DEEP CONTEXT / FAG-ARKIV LINK */}
+                    <Link href={`/fag-arkiv/${slug}`} className="block group pt-6">
+                        <div className="p-8 border border-[#2eff9b]/20 bg-[#2eff9b]/[0.02] rounded-2xl group-hover:bg-[#2eff9b]/[0.08] transition-all relative overflow-hidden">
+                            <div className="absolute top-0 right-0 p-8 opacity-10 font-mono text-6xl font-black italic mix-blend-overlay pointer-events-none">
+                                REPORT
+                            </div>
+                            <h3 className="text-[#2eff9b] font-mono text-sm uppercase tracking-widest mb-2 flex items-center gap-3">
+                                <span>Deep Context Link</span> <span className="group-hover:translate-x-2 transition-transform">→</span>
+                            </h3>
+                            <p className="text-xl font-bold mb-2">Les vår tekniske rapport fra fagarkivet</p>
+                            <p className="text-sm text-[#e6e5de]/50 group-hover:text-[#e6e5de]/80 transition-colors">Avgjørende SGE-signal for {cityName}</p>
+                        </div>
+                    </Link>
+
+                    {/* LOKAL FAQ FOR SGE */}
+                    <div className="pt-12 border-t border-white/5">
+                        <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
+                            <span className="w-8 h-[2px] bg-[#2eff9b]" />
+                            Ofte stilte spørsmål i <span className="text-[#2eff9b]">{cityName}</span>
+                        </h3>
+                        <div className="grid gap-4">
+                            {faq.map((item, i) => (
+                                <div key={i} className="p-6 bg-white/5 border border-white/10 rounded-xl">
+                                    <h4 className="font-bold text-lg mb-2">{item.q}</h4>
+                                    <p className="text-[#e6e5de]/70">{item.a}</p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
