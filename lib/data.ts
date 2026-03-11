@@ -25,7 +25,8 @@ export const cityNames: Record<string, string> = {
 
 export type Zone = 'HISTORISK' | 'MODERNE' | 'VEKST';
 
-export const cityMetaData: Record<string, { zone: Zone, coordinates: string }> = {
+// 1. Definerer sonene for alle 50 nabolag (Arkitektonisk innholds-matrise)
+export const neighborhoodMatrix: Record<string, { zone: Zone, coordinates: string }> = {
     // Oslo - Mye historisk
     'frogner': { zone: 'HISTORISK', coordinates: '59.9225, 10.7042' },
     'majorstuen': { zone: 'HISTORISK', coordinates: '59.9298, 10.7145' },
@@ -339,27 +340,27 @@ export const zoneServiceData: Record<Zone, Record<string, ServiceZoneData>> = {
   }
 };
 
+// 2. Henter unikt innhold basert på Sone-logikk
 export function getServiceContent(serviceId: string, cityId: string) {
     const cityName = cityNames[cityId];
-    const cityData = cityMetaData[cityId];
+    const neighborhood = neighborhoodMatrix[cityId] || { zone: 'MODERNE' as Zone, coordinates: '59.9139, 10.7522' };
     const baseService = services.find(s => s.id === serviceId);
 
-    if (!baseService || !cityData) return null;
+    if (!baseService) return null;
 
-    const zone = cityData.zone;
-    const zoneData = zoneServiceData[zone]?.[serviceId];
-
+    const zoneData = zoneServiceData[neighborhood.zone][serviceId];
+    
     if (!zoneData) return null;
 
     return {
         baseService,
         cityName,
-        zone,
+        zone: neighborhood.zone,
         hook: zoneData.hook,
         usp: zoneData.usp,
         faq: zoneData.faq,
         slug: zoneData.slug,
-        coordinates: cityData.coordinates
+        coordinates: neighborhood.coordinates
     };
 }
 // Final validation completed
