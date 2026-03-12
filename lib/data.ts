@@ -1,156 +1,161 @@
 export const regions = {
-    oslo: ['frogner', 'majorstuen', 'ullern', 'vestre-aker', 'st-hanshaugen', 'grunerlokka', 'sagene', 'nordre-aker', 'nordstrand', 'gamle-oslo', 'alna', 'bjerke', 'grorud', 'stovner', 'ostensjo'],
-    baerum_asker: ['bekkestua', 'sandvika', 'hovik', 'stabekk', 'fornebu', 'lysaker', 'rykkinn', 'haslum', 'asker-sentrum', 'slemmestad', 'heggedal', 'holmen', 'vollen', 'dikemark'],
-    romerike: ['lillestrom', 'strommen', 'lorenskog', 'fjellhamar', 'skjetten', 'skedsmo', 'jessheim', 'klofta', 'kjeller', 'ralingen'],
-    follo: ['ski', 'kolbotn', 'oppegard', 'langhus', 'as', 'drobak', 'nesoddtangen', 'vinterbro', 'vestby', 'son', 'greverud']
+  oslo: ['frogner', 'majorstuen', 'ullern', 'vestre-aker', 'st-hanshaugen', 'grunerlokka', 'sagene', 'nordre-aker', 'nordstrand', 'gamle-oslo', 'alna', 'bjerke', 'grorud', 'stovner', 'ostensjo'],
+  baerum_asker: ['bekkestua', 'sandvika', 'hovik', 'stabekk', 'fornebu', 'lysaker', 'rykkinn', 'haslum', 'asker-sentrum', 'slemmestad', 'heggedal', 'holmen', 'vollen', 'dikemark'],
+  romerike: ['lillestrom', 'strommen', 'lorenskog', 'fjellhamar', 'skjetten', 'skedsmo', 'jessheim', 'klofta', 'kjeller', 'ralingen'],
+  follo: ['ski', 'kolbotn', 'oppegard', 'langhus', 'as', 'drobak', 'nesoddtangen', 'vinterbro', 'vestby', 'son', 'greverud']
 };
 
 export const cities = [
-    ...regions.oslo,
-    ...regions.baerum_asker,
-    ...regions.romerike,
-    ...regions.follo
+  ...regions.oslo,
+  ...regions.baerum_asker,
+  ...regions.romerike,
+  ...regions.follo
 ];
 
 export const cityNames: Record<string, string> = {
-    // Oslo Bydeler
-    'frogner': 'Frogner', 'majorstuen': 'Majorstuen', 'ullern': 'Ullern', 'vestre-aker': 'Vestre Aker', 'st-hanshaugen': 'St. Hanshaugen', 'grunerlokka': 'Grünerløkka', 'sagene': 'Sagene', 'nordre-aker': 'Nordre Aker', 'nordstrand': 'Nordstrand', 'gamle-oslo': 'Gamle Oslo', 'alna': 'Alna', 'bjerke': 'Bjerke', 'grorud': 'Grorud', 'stovner': 'Stovner', 'ostensjo': 'Østensjø',
-    // Bærum & Asker
-    'bekkestua': 'Bekkestua', 'sandvika': 'Sandvika', 'hovik': 'Høvik', 'stabekk': 'Stabekk', 'fornebu': 'Fornebu', 'lysaker': 'Lysaker', 'rykkinn': 'Rykkinn', 'haslum': 'Haslum', 'asker-sentrum': 'Asker sentrum', 'slemmestad': 'Slemmestad', 'heggedal': 'Heggedal', 'holmen': 'Holmen', 'vollen': 'Vollen', 'dikemark': 'Dikemark',
-    // Romerike
-    'lillestrom': 'Lillestrøm', 'strommen': 'Strømmen', 'lorenskog': 'Lørenskog', 'fjellhamar': 'Fjellhamar', 'skjetten': 'Skjetten', 'skedsmo': 'Skedsmo', 'jessheim': 'Jessheim', 'klofta': 'Kløfta', 'kjeller': 'Kjeller', 'ralingen': 'Rælingen',
-    // Follo
-    'ski': 'Ski', 'kolbotn': 'Kolbotn', 'oppegard': 'Oppegård', 'langhus': 'Langhus', 'as': 'Ås', 'drobak': 'Drøbak', 'nesoddtangen': 'Nesoddtangen', 'vinterbro': 'Vinterbro', 'vestby': 'Vestby', 'son': 'Son', 'greverud': 'Greverud',
-    'oslo': 'Oslo'
+  // Oslo Bydeler
+  'frogner': 'Frogner', 'majorstuen': 'Majorstuen', 'ullern': 'Ullern', 'vestre-aker': 'Vestre Aker', 'st-hanshaugen': 'St. Hanshaugen', 'grunerlokka': 'Grünerløkka', 'sagene': 'Sagene', 'nordre-aker': 'Nordre Aker', 'nordstrand': 'Nordstrand', 'gamle-oslo': 'Gamle Oslo', 'alna': 'Alna', 'bjerke': 'Bjerke', 'grorud': 'Grorud', 'stovner': 'Stovner', 'ostensjo': 'Østensjø',
+  // Bærum & Asker
+  'bekkestua': 'Bekkestua', 'sandvika': 'Sandvika', 'hovik': 'Høvik', 'stabekk': 'Stabekk', 'fornebu': 'Fornebu', 'lysaker': 'Lysaker', 'rykkinn': 'Rykkinn', 'haslum': 'Haslum', 'asker-sentrum': 'Asker sentrum', 'slemmestad': 'Slemmestad', 'heggedal': 'Heggedal', 'holmen': 'Holmen', 'vollen': 'Vollen', 'dikemark': 'Dikemark',
+  // Romerike
+  'lillestrom': 'Lillestrøm', 'strommen': 'Strømmen', 'lorenskog': 'Lørenskog', 'fjellhamar': 'Fjellhamar', 'skjetten': 'Skjetten', 'skedsmo': 'Skedsmo', 'jessheim': 'Jessheim', 'klofta': 'Kløfta', 'kjeller': 'Kjeller', 'ralingen': 'Rælingen',
+  // Follo
+  'ski': 'Ski', 'kolbotn': 'Kolbotn', 'oppegard': 'Oppegård', 'langhus': 'Langhus', 'as': 'Ås', 'drobak': 'Drøbak', 'nesoddtangen': 'Nesoddtangen', 'vinterbro': 'Vinterbro', 'vestby': 'Vestby', 'son': 'Son', 'greverud': 'Greverud',
+  'oslo': 'Oslo'
 };
 
 export type Zone = 'HISTORISK' | 'MODERNE' | 'VEKST';
 
 export interface Project {
-    id: string;
-    title: string;
-    location: string;
-    cityId: string;
-    service: string;
-    zone: Zone;
-    tags: string[];
-    description: string;
-    image?: string;
+  id: string;
+  title: string;
+  location: string;
+  cityId: string;
+  service: string;
+  zone: Zone;
+  tags: string[];
+  description: string;
+  image?: string;
 }
 
 // 1. Definerer sonene for alle 50 nabolag (Arkitektonisk innholds-matrise)
 export const neighborhoodMatrix: Record<string, { zone: Zone, coordinates: string }> = {
-    // Oslo - Mye historisk
-    'frogner': { zone: 'HISTORISK', coordinates: '59.9225, 10.7042' },
-    'majorstuen': { zone: 'HISTORISK', coordinates: '59.9298, 10.7145' },
-    'ullern': { zone: 'MODERNE', coordinates: '59.9265, 10.6540' },
-    'vestre-aker': { zone: 'MODERNE', coordinates: '59.9535, 10.6865' },
-    'st-hanshaugen': { zone: 'HISTORISK', coordinates: '59.9272, 10.7410' },
-    'grunerlokka': { zone: 'HISTORISK', coordinates: '59.9226, 10.7583' },
-    'sagene': { zone: 'HISTORISK', coordinates: '59.9372, 10.7538' },
-    'nordre-aker': { zone: 'MODERNE', coordinates: '59.9576, 10.7594' },
-    'nordstrand': { zone: 'MODERNE', coordinates: '59.8643, 10.7933' },
-    'gamle-oslo': { zone: 'HISTORISK', coordinates: '59.9048, 10.7686' },
-    'alna': { zone: 'VEKST', coordinates: '59.9329, 10.8357' },
-    'bjerke': { zone: 'VEKST', coordinates: '59.9405, 10.8166' },
-    'grorud': { zone: 'VEKST', coordinates: '59.9602, 10.8804' },
-    'stovner': { zone: 'VEKST', coordinates: '59.9575, 10.9254' },
-    'ostensjo': { zone: 'VEKST', coordinates: '59.8876, 10.8339' },
-    // Bærum & Asker - Mye moderne/eneboliger
-    'bekkestua': { zone: 'MODERNE', coordinates: '59.9168, 10.5878' },
-    'sandvika': { zone: 'VEKST', coordinates: '59.8911, 10.5268' },
-    'hovik': { zone: 'MODERNE', coordinates: '59.9009, 10.5786' },
-    'stabekk': { zone: 'MODERNE', coordinates: '59.9079, 10.6062' },
-    'fornebu': { zone: 'MODERNE', coordinates: '59.8941, 10.6267' },
-    'lysaker': { zone: 'VEKST', coordinates: '59.9126, 10.6382' },
-    'rykkinn': { zone: 'MODERNE', coordinates: '59.9288, 10.4812' },
-    'haslum': { zone: 'MODERNE', coordinates: '59.9205, 10.5645' },
-    'asker-sentrum': { zone: 'MODERNE', coordinates: '59.8331, 10.4363' },
-    'slemmestad': { zone: 'MODERNE', coordinates: '59.7797, 10.4963' },
-    'heggedal': { zone: 'MODERNE', coordinates: '59.7891, 10.4385' },
-    'holmen': { zone: 'MODERNE', coordinates: '59.8540, 10.4883' },
-    'vollen': { zone: 'MODERNE', coordinates: '59.8091, 10.4828' },
-    'dikemark': { zone: 'MODERNE', coordinates: '59.8142, 10.3807' },
-    // Romerike
-    'lillestrom': { zone: 'VEKST', coordinates: '59.9560, 11.0494' },
-    'strommen': { zone: 'VEKST', coordinates: '59.9472, 11.0042' },
-    'lorenskog': { zone: 'VEKST', coordinates: '59.9288, 10.9572' },
-    'fjellhamar': { zone: 'VEKST', coordinates: '59.9366, 10.9859' },
-    'skjetten': { zone: 'VEKST', coordinates: '59.9599, 11.0000' },
-    'skedsmo': { zone: 'VEKST', coordinates: '59.9984, 11.0425' },
-    'jessheim': { zone: 'VEKST', coordinates: '60.1417, 11.1732' },
-    'klofta': { zone: 'VEKST', coordinates: '60.0763, 11.1396' },
-    'kjeller': { zone: 'VEKST', coordinates: '59.9774, 11.0416' },
-    'ralingen': { zone: 'VEKST', coordinates: '59.9329, 11.0772' },
-    // Follo
-    'ski': { zone: 'VEKST', coordinates: '59.7196, 10.8357' },
-    'kolbotn': { zone: 'MODERNE', coordinates: '59.8115, 10.8037' },
-    'oppegard': { zone: 'MODERNE', coordinates: '59.7912, 10.7963' },
-    'langhus': { zone: 'MODERNE', coordinates: '59.7483, 10.8358' },
-    'as': { zone: 'VEKST', coordinates: '59.6631, 10.7946' },
-    'drobak': { zone: 'HISTORISK', coordinates: '59.6618, 10.6300' },
-    'nesoddtangen': { zone: 'MODERNE', coordinates: '59.8687, 10.6558' },
-    'vinterbro': { zone: 'MODERNE', coordinates: '59.7424, 10.7497' },
-    'vestby': { zone: 'VEKST', coordinates: '59.6015, 10.7488' },
-    'son': { zone: 'HISTORISK', coordinates: '59.5222, 10.6865' },
-    'greverud': { zone: 'MODERNE', coordinates: '59.7937, 10.7936' },
-    'oslo': { zone: 'HISTORISK', coordinates: '59.9139, 10.7522' }
+  // Oslo - Mye historisk
+  'frogner': { zone: 'HISTORISK', coordinates: '59.9225, 10.7042' },
+  'majorstuen': { zone: 'HISTORISK', coordinates: '59.9298, 10.7145' },
+  'ullern': { zone: 'MODERNE', coordinates: '59.9265, 10.6540' },
+  'vestre-aker': { zone: 'MODERNE', coordinates: '59.9535, 10.6865' },
+  'st-hanshaugen': { zone: 'HISTORISK', coordinates: '59.9272, 10.7410' },
+  'grunerlokka': { zone: 'HISTORISK', coordinates: '59.9226, 10.7583' },
+  'sagene': { zone: 'HISTORISK', coordinates: '59.9372, 10.7538' },
+  'nordre-aker': { zone: 'MODERNE', coordinates: '59.9576, 10.7594' },
+  'nordstrand': { zone: 'MODERNE', coordinates: '59.8643, 10.7933' },
+  'gamle-oslo': { zone: 'HISTORISK', coordinates: '59.9048, 10.7686' },
+  'alna': { zone: 'VEKST', coordinates: '59.9329, 10.8357' },
+  'bjerke': { zone: 'VEKST', coordinates: '59.9405, 10.8166' },
+  'grorud': { zone: 'VEKST', coordinates: '59.9602, 10.8804' },
+  'stovner': { zone: 'VEKST', coordinates: '59.9575, 10.9254' },
+  'ostensjo': { zone: 'VEKST', coordinates: '59.8876, 10.8339' },
+  // Bærum & Asker - Mye moderne/eneboliger
+  'bekkestua': { zone: 'MODERNE', coordinates: '59.9168, 10.5878' },
+  'sandvika': { zone: 'VEKST', coordinates: '59.8911, 10.5268' },
+  'hovik': { zone: 'MODERNE', coordinates: '59.9009, 10.5786' },
+  'stabekk': { zone: 'MODERNE', coordinates: '59.9079, 10.6062' },
+  'fornebu': { zone: 'MODERNE', coordinates: '59.8941, 10.6267' },
+  'lysaker': { zone: 'VEKST', coordinates: '59.9126, 10.6382' },
+  'rykkinn': { zone: 'MODERNE', coordinates: '59.9288, 10.4812' },
+  'haslum': { zone: 'MODERNE', coordinates: '59.9205, 10.5645' },
+  'asker-sentrum': { zone: 'MODERNE', coordinates: '59.8331, 10.4363' },
+  'slemmestad': { zone: 'MODERNE', coordinates: '59.7797, 10.4963' },
+  'heggedal': { zone: 'MODERNE', coordinates: '59.7891, 10.4385' },
+  'holmen': { zone: 'MODERNE', coordinates: '59.8540, 10.4883' },
+  'vollen': { zone: 'MODERNE', coordinates: '59.8091, 10.4828' },
+  'dikemark': { zone: 'MODERNE', coordinates: '59.8142, 10.3807' },
+  // Romerike
+  'lillestrom': { zone: 'VEKST', coordinates: '59.9560, 11.0494' },
+  'strommen': { zone: 'VEKST', coordinates: '59.9472, 11.0042' },
+  'lorenskog': { zone: 'VEKST', coordinates: '59.9288, 10.9572' },
+  'fjellhamar': { zone: 'VEKST', coordinates: '59.9366, 10.9859' },
+  'skjetten': { zone: 'VEKST', coordinates: '59.9599, 11.0000' },
+  'skedsmo': { zone: 'VEKST', coordinates: '59.9984, 11.0425' },
+  'jessheim': { zone: 'VEKST', coordinates: '60.1417, 11.1732' },
+  'klofta': { zone: 'VEKST', coordinates: '60.0763, 11.1396' },
+  'kjeller': { zone: 'VEKST', coordinates: '59.9774, 11.0416' },
+  'ralingen': { zone: 'VEKST', coordinates: '59.9329, 11.0772' },
+  // Follo
+  'ski': { zone: 'VEKST', coordinates: '59.7196, 10.8357' },
+  'kolbotn': { zone: 'MODERNE', coordinates: '59.8115, 10.8037' },
+  'oppegard': { zone: 'MODERNE', coordinates: '59.7912, 10.7963' },
+  'langhus': { zone: 'MODERNE', coordinates: '59.7483, 10.8358' },
+  'as': { zone: 'VEKST', coordinates: '59.6631, 10.7946' },
+  'drobak': { zone: 'HISTORISK', coordinates: '59.6618, 10.6300' },
+  'nesoddtangen': { zone: 'MODERNE', coordinates: '59.8687, 10.6558' },
+  'vinterbro': { zone: 'MODERNE', coordinates: '59.7424, 10.7497' },
+  'vestby': { zone: 'VEKST', coordinates: '59.6015, 10.7488' },
+  'son': { zone: 'HISTORISK', coordinates: '59.5222, 10.6865' },
+  'greverud': { zone: 'MODERNE', coordinates: '59.7937, 10.7936' },
+  'oslo': { zone: 'HISTORISK', coordinates: '59.9139, 10.7522' }
 };
 
 export const services = [
-    {
-        id: 'vindusservice',
-        title: 'Service på vinduer og dører',
-        vakt: true,
-        desc: 'Profesjonell service, justering og vedlikehold. Rask respons forlenger levetiden.',
-        longDesc:
-            'Vi tilbyr profesjonell service, justering og vedlikehold av vinduer og dører. Rask respons og nøyaktig arbeid forlenger levetiden på produktene og sikrer optimal funksjon over tid.',
-        color: 'bg-orange-600',
-    },
-    {
-        id: 'kjerneboring',
-        title: 'Betongarbeid & Kjerneboring',
-        vakt: true,
-        desc: 'Presisjonsboring i betong og armering. Støvfritt og effektivt.',
-        longDesc:
-            'Våre spesialister på betong og kjerneboring leverer millimeterpresisjon i alt fra ventilasjonskanaler til større konstruksjonsendringer.',
-        color: 'bg-slate-800',
-    },
-    {
-        id: 'tomrer',
-        title: 'Tømrerarbeid',
-        vakt: true,
-        desc: 'Alt fra bærende konstruksjoner til detaljert finish.',
-        longDesc:
-            'Våre erfarne tømrere håndterer alt fra bærende konstruksjoner til innvendige detaljer. Vi kombinerer håndverk og moderne metoder.',
-        color: 'bg-orange-500',
-    },
-    {
-        id: 'restaurering',
-        title: 'Restaurering',
-        vakt: false,
-        desc: 'Eksperter på verneverdige bygg og historiske detaljer.',
-        longDesc:
-            'Vi er spesialister på restaurering av verneverdige og historiske bygg. Arbeidet utføres med tradisjonelle metoder kombinert med moderne teknikk for å bevare byggets autentiske karakter.',
-        color: 'bg-stone-700',
-    },
-    {
-        id: 'tak-fasade',
-        title: 'Tak & Fasade',
-        vakt: false,
-        desc: 'Solide løsninger bygget for norsk klima.',
-        longDesc:
-            'Fra komplett takskifte til fasadekledning. Vi leverer solide løsninger designet for å tåle norsk vær, med fokus på holdbarhet og estetikk.',
-        color: 'bg-zinc-800',
-    },
-    {
-        id: 'nybygg-rehab',
-        title: 'Rehab & Nybygg',
-        vakt: false,
-        desc: 'Fra plan til ferdigstillelse. Totalentreprise.',
-        longDesc:
-            'Vi tar prosjekter fra plan til ferdigstillelse. Enten det gjelder rehabilitering av eksisterende bygg eller nybygg, håndterer vi hele prosessen med erfarne prosjektledere.',
-    },
+  {
+    id: 'vindusservice',
+    title: 'Service på vinduer og dører',
+    vakt: true,
+    desc: 'Profesjonell service, justering og vedlikehold. Rask respons forlenger levetiden.',
+    longDesc:
+      'Vi tilbyr profesjonell service, justering og vedlikehold av vinduer og dører. Rask respons og nøyaktig arbeid forlenger levetiden på produktene og sikrer optimal funksjon over tid.',
+    color: 'bg-orange-600',
+    macroImage: '/images/services/macro-window.webp',
+  },
+  {
+    id: 'kjerneboring',
+    title: 'Betongarbeid & Kjerneboring',
+    vakt: true,
+    desc: 'Presisjonsboring i betong og armering. Støvfritt og effektivt.',
+    longDesc:
+      'Våre spesialister på betong og kjerneboring leverer millimeterpresisjon i alt fra ventilasjonskanaler til større konstruksjonsendringer.',
+    color: 'bg-slate-800',
+    macroImage: '/images/services/macro-drill.webp',
+  },
+  {
+    id: 'tomrer',
+    title: 'Tømrerarbeid',
+    vakt: true,
+    desc: 'Alt fra bærende konstruksjoner til detaljert finish.',
+    longDesc:
+      'Våre erfarne tømrere håndterer alt fra bærende konstruksjoner til innvendige detaljer. Vi kombinerer håndverk og moderne metoder.',
+    color: 'bg-orange-500',
+    macroImage: '/images/services/macro-wood.webp',
+  },
+  {
+    id: 'restaurering',
+    title: 'Restaurering',
+    vakt: false,
+    desc: 'Eksperter på verneverdige bygg og historiske detaljer.',
+    longDesc:
+      'Vi er spesialister på restaurering av verneverdige og historiske bygg. Arbeidet utføres med tradisjonelle metoder kombinert med moderne teknikk for å bevare byggets autentiske karakter.',
+    color: 'bg-stone-700',
+    macroImage: '/images/services/macro-restoration.webp',
+  },
+  {
+    id: 'tak-fasade',
+    title: 'Tak & Fasade',
+    vakt: false,
+    desc: 'Solide løsninger bygget for norsk klima.',
+    longDesc:
+      'Fra komplett takskifte til fasadekledning. Vi leverer solide løsninger designet for å tåle norsk vær, med fokus på holdbarhet og estetikk.',
+    color: 'bg-zinc-800',
+    macroImage: '/images/services/macro-facade.webp',
+  },
+  {
+    id: 'nybygg-rehab',
+    title: 'Rehab & Nybygg',
+    vakt: false,
+    desc: 'Fra plan til ferdigstillelse. Totalentreprise.',
+    longDesc:
+      'Vi tar prosjekter fra plan til ferdigstillelse. Enten det gjelder rehabilitering av eksisterende bygg eller nybygg, håndterer vi hele prosessen med erfarne prosjektledere.',
+  },
 ];
 
 // Mapping av klargjorte hero-bilder til tjenester
@@ -164,15 +169,15 @@ const serviceImageMap: Record<string, string> = {
 };
 
 interface LocalFAQ {
-    q: string;
-    a: string;
+  q: string;
+  a: string;
 }
 
 interface ServiceZoneData {
-    hook: string;
-    usp: string;
-    faq: LocalFAQ[];
-    slug: string;
+  hook: string;
+  usp: string;
+  faq: LocalFAQ[];
+  slug: string;
 }
 
 export const zoneServiceData: Record<Zone, Record<string, ServiceZoneData>> = {
@@ -366,27 +371,27 @@ export const zoneServiceData: Record<Zone, Record<string, ServiceZoneData>> = {
 
 // 2. Henter unikt innhold basert på Sone-logikk
 export function getServiceContent(serviceId: string, cityId: string) {
-    const cityName = cityNames[cityId];
-    const neighborhood = neighborhoodMatrix[cityId] || { zone: 'MODERNE' as Zone, coordinates: '59.9139, 10.7522' };
-    const baseService = services.find(s => s.id === serviceId);
+  const cityName = cityNames[cityId];
+  const neighborhood = neighborhoodMatrix[cityId] || { zone: 'MODERNE' as Zone, coordinates: '59.9139, 10.7522' };
+  const baseService = services.find(s => s.id === serviceId);
 
-    if (!baseService) return null;
+  if (!baseService) return null;
 
-    const zoneData = zoneServiceData[neighborhood.zone][serviceId];
-    
-    if (!zoneData) return null;
+  const zoneData = zoneServiceData[neighborhood.zone][serviceId];
 
-    return {
-        baseService,
-        cityName,
-        zone: neighborhood.zone,
-        hook: zoneData.hook,
-        usp: zoneData.usp,
-        faq: zoneData.faq,
-        slug: zoneData.slug,
-        coordinates: neighborhood.coordinates,
-        heroImage: serviceImageMap[serviceId] // Dynamisk bilde-ruting
-    };
+  if (!zoneData) return null;
+
+  return {
+    baseService,
+    cityName,
+    zone: neighborhood.zone,
+    hook: zoneData.hook,
+    usp: zoneData.usp,
+    faq: zoneData.faq,
+    slug: zoneData.slug,
+    coordinates: neighborhood.coordinates,
+    heroImage: serviceImageMap[serviceId] // Dynamisk bilde-ruting
+  };
 }
 
 export const projects: Project[] = [
@@ -394,7 +399,7 @@ export const projects: Project[] = [
     id: "radisson-red-oslo-okern",
     title: "Radisson RED Oslo Økern",
     location: "Økern",
-    cityId: "alna", 
+    cityId: "alna",
     service: "kjerneboring",
     zone: "VEKST",
     tags: ["Hotell", "Teknisk Boring"],
