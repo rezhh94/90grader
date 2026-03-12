@@ -398,7 +398,8 @@ export const projects: Project[] = [
     service: "kjerneboring",
     zone: "VEKST",
     tags: ["Hotell", "Teknisk Boring"],
-    description: "Kompleks kjerneboring for et av Oslos mest moderne hotellbygg."
+    description: "Kompleks kjerneboring for et av Oslos mest moderne hotellbygg.",
+    image: "/images/hero/service-kjerneboring-betong-presisjon-90grader.webp"
   },
   {
     id: "fyrstikkbakken-14-bryn",
@@ -428,7 +429,8 @@ export const projects: Project[] = [
     service: "rehabilitering",
     zone: "VEKST",
     tags: ["Næringsbygg", "Infrastruktur"],
-    description: "Leveranse av spesialiserte håndverkstjenester til Norges nye kraftsenter for bygg og anlegg."
+    description: "Leveranse av spesialiserte håndverkstjenester til Norges nye kraftsenter for bygg og anlegg.",
+    image: "/images/hero/project-construction-city-ulven-90grader.webp"
   },
   {
     id: "det-nye-sykehuset-i-drammen",
@@ -438,7 +440,8 @@ export const projects: Project[] = [
     service: "kjerneboring",
     zone: "VEKST",
     tags: ["Offentlig", "Helsebygg"],
-    description: "Kritiske gjennomføringer og teknisk boring i et av Viken-regionens største offentlige prosjekter."
+    description: "Kritiske gjennomføringer og teknisk boring i et av Viken-regionens største offentlige prosjekter.",
+    image: "/images/hero/service-kjerneboring-betong-presisjon-90grader.webp"
   },
   {
     id: "majorstuen-residence",

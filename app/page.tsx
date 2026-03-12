@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from 'next/link';
+
 import { HeroSection } from '@/components/design/HeroSection';
 import { TrustMarquee } from '@/components/design/TrustMarquee';
 import { ServicesSection } from '@/components/design/ServicesSection';
@@ -26,16 +28,23 @@ export default function DesignTestPage() {
             
             <TrustMarquee />
             
-            {/* Ny Referanse-seksjon for umiddelbar tillit */}
-            <section className="py-24 bg-white/[0.02]">
-                <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-3xl font-bold uppercase mb-12 flex items-center gap-4">
-                        <span className="w-8 h-[1px] bg-[#2eff9b]" />
-                        Utvalgte Prosjekter
-                    </h2>
-                    <ProjectGrid projects={featuredProjects} />
+            {/* Seksjonen i app/page.tsx */}
+            <section className="py-32 bg-transparent">
+              <div className="max-w-7xl mx-auto px-6">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                  <div>
+                    <p className="font-mono text-[10px] text-[#2eff9b] uppercase tracking-[0.4em] mb-4">Referanser</p>
+                    <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter">Utvalgte Prosjekter</h2>
+                  </div>
+                  <Link href="/prosjekter" className="text-[#2eff9b] font-mono text-xs uppercase tracking-widest border-b border-[#2eff9b]/30 pb-2 hover:border-[#2eff9b] transition-all">
+                    Se alle referanser →
+                  </Link>
                 </div>
+                
+                <ProjectGrid projects={featuredProjects} />
+              </div>
             </section>
+
 
             <FeatureCards />
             <ServicesSection />
