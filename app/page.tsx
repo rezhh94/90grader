@@ -21,7 +21,7 @@ export default function DesignTestPage() {
             <HeroSection 
                 image="/images/hero/project-construction-city-ulven-90grader.webp"
                 title="Presisjon i hvert ledd"
-                subtitle="Fra komplekse industriprosjekter til antikvarisk restaurering."
+                subtitle="Fra komplekse industriprosjekter til antikvarisk restaurering i Stor-Oslo."
             />
             
             <TrustMarquee />
