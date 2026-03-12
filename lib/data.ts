@@ -20,7 +20,8 @@ export const cityNames: Record<string, string> = {
     // Romerike
     'lillestrom': 'Lillestrøm', 'strommen': 'Strømmen', 'lorenskog': 'Lørenskog', 'fjellhamar': 'Fjellhamar', 'skjetten': 'Skjetten', 'skedsmo': 'Skedsmo', 'jessheim': 'Jessheim', 'klofta': 'Kløfta', 'kjeller': 'Kjeller', 'ralingen': 'Rælingen',
     // Follo
-    'ski': 'Ski', 'kolbotn': 'Kolbotn', 'oppegard': 'Oppegård', 'langhus': 'Langhus', 'as': 'Ås', 'drobak': 'Drøbak', 'nesoddtangen': 'Nesoddtangen', 'vinterbro': 'Vinterbro', 'vestby': 'Vestby', 'son': 'Son', 'greverud': 'Greverud'
+    'ski': 'Ski', 'kolbotn': 'Kolbotn', 'oppegard': 'Oppegård', 'langhus': 'Langhus', 'as': 'Ås', 'drobak': 'Drøbak', 'nesoddtangen': 'Nesoddtangen', 'vinterbro': 'Vinterbro', 'vestby': 'Vestby', 'son': 'Son', 'greverud': 'Greverud',
+    'oslo': 'Oslo'
 };
 
 export type Zone = 'HISTORISK' | 'MODERNE' | 'VEKST';
@@ -92,7 +93,8 @@ export const neighborhoodMatrix: Record<string, { zone: Zone, coordinates: strin
     'vinterbro': { zone: 'MODERNE', coordinates: '59.7424, 10.7497' },
     'vestby': { zone: 'VEKST', coordinates: '59.6015, 10.7488' },
     'son': { zone: 'HISTORISK', coordinates: '59.5222, 10.6865' },
-    'greverud': { zone: 'MODERNE', coordinates: '59.7937, 10.7936' }
+    'greverud': { zone: 'MODERNE', coordinates: '59.7937, 10.7936' },
+    'oslo': { zone: 'HISTORISK', coordinates: '59.9139, 10.7522' }
 };
 
 export const services = [
@@ -150,6 +152,16 @@ export const services = [
             'Vi tar prosjekter fra plan til ferdigstillelse. Enten det gjelder rehabilitering av eksisterende bygg eller nybygg, håndterer vi hele prosessen med erfarne prosjektledere.',
     },
 ];
+
+// Mapping av klargjorte hero-bilder til tjenester
+const serviceImageMap: Record<string, string> = {
+  "vindusservice": "/images/hero/service-vindusservice-vedlikehold-90grader.webp",
+  "kjerneboring": "/images/hero/service-kjerneboring-betong-presisjon-90grader.webp",
+  "tomrer": "/images/hero/tomrerarbeider-service-tomrerarbeid-konstruksjon-90grader.webp",
+  "restaurering": "/images/hero/restaurering-90grader.webp",
+  "tak-fasade": "/images/hero/tak-og-fasadearbeid-90grader.webp",
+  "nybygg-rehab": "/images/hero/nybygg-rehab-90grader.webp"
+};
 
 interface LocalFAQ {
     q: string;
@@ -372,7 +384,8 @@ export function getServiceContent(serviceId: string, cityId: string) {
         usp: zoneData.usp,
         faq: zoneData.faq,
         slug: zoneData.slug,
-        coordinates: neighborhood.coordinates
+        coordinates: neighborhood.coordinates,
+        heroImage: serviceImageMap[serviceId] // Dynamisk bilde-ruting
     };
 }
 

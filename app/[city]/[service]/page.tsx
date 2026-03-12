@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { services, cities, cityNames, getServiceContent, projects } from '@/lib/data';
 import { ContactForm } from '@/components/ContactForm';
@@ -49,7 +50,14 @@ export default async function ServiceCityPage({ params }: PageProps) {
         notFound();
     }
 
-    const { baseService: service, cityName, zone, hook, faq, slug, coordinates } = content;
+    const { baseService: service, cityName, zone, hook, faq, slug, coordinates, heroImage } = content;
+
+    // Sone-spesifikk visuell vinkling (fra globals.css logikk)
+    const zoneStyles = {
+        HISTORISK: "sepia-[0.15] contrast-[1.05] brightness-[0.9]",
+        MODERNE: "saturate-[0.8] hue-rotate-[10deg] brightness-[1.05]",
+        VEKST: "contrast-[1.1] saturate-[1.1] brightness-[1.1]"
+    };
 
     // JSON-LD for SGE/SEO med Hyper-lokal NAP-data
     const schemaGeo = coordinates.split(', ') || ['59.9139', '10.7522']; // Fallback Oslo
@@ -101,6 +109,20 @@ export default async function ServiceCityPage({ params }: PageProps) {
                         <span className="text-[#e6e5de]/20 italic">i {cityName}</span>
                     </h1>
 
+                    {/* DYNAMISK HERO-BILDE MED SONE-FILTER */}
+                    {heroImage && (
+                        <div className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-white/10 rounded-2xl mb-16">
+                            <Image
+                                src={heroImage}
+                                alt={`${service.title} utført i ${cityName} av 90 Grader AS`}
+                                fill
+                                priority
+                                className={`object-cover transition-all duration-700 ${zoneStyles[zone as keyof typeof zoneStyles]}`}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#181618] via-transparent to-transparent opacity-60" />
+                        </div>
+                    )}
+
                     <p className="text-2xl md:text-3xl text-[#e6e5de]/80 font-light max-w-4xl leading-relaxed">
                         {hook}
                     </p>
@@ -116,7 +138,15 @@ export default async function ServiceCityPage({ params }: PageProps) {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {projects
-                            .filter(p => p.cityId === city || p.zone === zone)
+                            .map(p => {
+                                let score = 0;
+                                if (p.cityId === city) score += 100; // Nivå 1: Geografisk match
+                                if (p.zone === zone) score += 10;    // Nivå 2: Sone-match
+                                if (p.service === serviceId) score += 1; // Nivå 3: Tjeneste-match
+                                return { ...p, score };
+                            })
+                            .filter(p => p.score > 0)
+                            .sort((a, b) => b.score - a.score)
                             .slice(0, 2)
                             .map((project) => (
                                 <Link 
