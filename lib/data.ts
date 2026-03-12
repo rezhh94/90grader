@@ -25,6 +25,18 @@ export const cityNames: Record<string, string> = {
 
 export type Zone = 'HISTORISK' | 'MODERNE' | 'VEKST';
 
+export interface Project {
+    id: string;
+    title: string;
+    location: string;
+    cityId: string;
+    service: string;
+    zone: Zone;
+    tags: string[];
+    description: string;
+    image?: string;
+}
+
 // 1. Definerer sonene for alle 50 nabolag (Arkitektonisk innholds-matrise)
 export const neighborhoodMatrix: Record<string, { zone: Zone, coordinates: string }> = {
     // Oslo - Mye historisk
@@ -363,5 +375,228 @@ export function getServiceContent(serviceId: string, cityId: string) {
         coordinates: neighborhood.coordinates
     };
 }
+
+export const projects: Project[] = [
+  {
+    id: "radisson-red-oslo-okern",
+    title: "Radisson RED Oslo Økern",
+    location: "Økern",
+    cityId: "alna", 
+    service: "kjerneboring",
+    zone: "VEKST",
+    tags: ["Hotell", "Teknisk Boring"],
+    description: "Kompleks kjerneboring for et av Oslos mest moderne hotellbygg."
+  },
+  {
+    id: "fyrstikkbakken-14-bryn",
+    title: "Fyrstikkbakken 14",
+    location: "Bryn",
+    cityId: "gamle-oslo",
+    service: "rehabilitering",
+    zone: "VEKST",
+    tags: ["Boligutvikling", "Massivtre"],
+    description: "Innovative løsninger for et banebrytende boligprosjekt på Bryn."
+  },
+  {
+    id: "sameiet-wilhelms-gate-4",
+    title: "Sameiet Wilhelms Gate 4",
+    location: "Bislett",
+    cityId: "st-hanshaugen",
+    service: "restaurering",
+    zone: "HISTORISK",
+    tags: ["Bygård", "Antikvarisk"],
+    description: "Nøyaktig restaurering av historisk fasade og vindusdetaljer."
+  },
+  {
+    id: "construction-city-oslo",
+    title: "Construction City",
+    location: "Ulven",
+    cityId: "bjerke",
+    service: "rehabilitering",
+    zone: "VEKST",
+    tags: ["Næringsbygg", "Infrastruktur"],
+    description: "Leveranse av spesialiserte håndverkstjenester til Norges nye kraftsenter for bygg og anlegg."
+  },
+  {
+    id: "det-nye-sykehuset-i-drammen",
+    title: "Det nye sykehuset i Drammen",
+    location: "Drammen",
+    cityId: "drammen",
+    service: "kjerneboring",
+    zone: "VEKST",
+    tags: ["Offentlig", "Helsebygg"],
+    description: "Kritiske gjennomføringer og teknisk boring i et av Viken-regionens største offentlige prosjekter."
+  },
+  {
+    id: "majorstuen-residence",
+    title: "Majorstuen Residence",
+    location: "Majorstuen",
+    cityId: "majorstuen",
+    service: "vindusservice",
+    zone: "HISTORISK",
+    tags: ["Luksusbolig", "Restaurering"],
+    description: "Oppgradering av vindussystemer i eksklusive bygårdsleiligheter."
+  },
+  {
+    id: "karenslyst-alle-modernisering",
+    title: "Karenslyst Allé Modernisering",
+    location: "Skøyen",
+    cityId: "ullern",
+    service: "tak-fasade",
+    zone: "MODERNE",
+    tags: ["Næring", "Fasade"],
+    description: "Klimasikring og fasadeoppgradering av kontorbygg på Skøyen."
+  },
+  {
+    id: "st-hanshaugen-park-apartments",
+    title: "St. Hanshaugen Park Apartments",
+    location: "St. Hanshaugen",
+    cityId: "st-hanshaugen",
+    service: "tomrer",
+    zone: "HISTORISK",
+    tags: ["Bolig", "Detaljarbeid"],
+    description: "Innvendig tømrerarbeid med fokus på klassiske detaljer og moderne komfort."
+  },
+  {
+    id: "fornebu-brygge-teknisk",
+    title: "Fornebu Brygge Teknisk",
+    location: "Fornebu",
+    cityId: "fornebu",
+    service: "kjerneboring",
+    zone: "MODERNE",
+    tags: ["Infrastruktur", "Teknisk"],
+    description: "Presisjonsboring for tekniske anlegg i nytt næringskompleks."
+  },
+  {
+    id: "lillestrom-stasjon-rehab",
+    title: "Lillestrøm Stasjon Rehab",
+    location: "Lillestrøm",
+    cityId: "lillestrom",
+    service: "restaurering",
+    zone: "VEKST",
+    tags: ["Knutepunkt", "Vedlikehold"],
+    description: "Spesialisert vedlikehold og restaurering av betongkonstruksjoner."
+  },
+  {
+    id: "sandvika-elv-terrasse",
+    title: "Sandvika Elv Terrasse",
+    location: "Sandvika",
+    cityId: "sandvika",
+    service: "nybygg-rehab",
+    zone: "VEKST",
+    tags: ["Bolig", "Totalentreprise"],
+    description: "Totalrehabilitering av leilighetsbygg med fokus på ENØK."
+  },
+  {
+    id: "ski-storsenter-utvidelse",
+    title: "Ski Storsenter Utvidelse",
+    location: "Ski",
+    cityId: "ski",
+    service: "kjerneboring",
+    zone: "VEKST",
+    tags: ["Handel", "Teknisk"],
+    description: "Kjerneboring for nye tekniske føringer under utvidelsen."
+  },
+  {
+    id: "drobak-havnegata-tre",
+    title: "Drøbak Havnegata Tre",
+    location: "Drøbak",
+    cityId: "drobak",
+    service: "tomrer",
+    zone: "HISTORISK",
+    tags: ["Trehus", "Tradisjon"],
+    description: "Håndverksmessig reparasjon av historisk trehusbebyggelse."
+  },
+  {
+    id: "lysaker-park-fasade",
+    title: "Lysaker Park Fasade",
+    location: "Lysaker",
+    cityId: "lysaker",
+    service: "tak-fasade",
+    zone: "VEKST",
+    tags: ["Næring", "Klimasikring"],
+    description: "Montering av moderne fasadesystemer på kontorbygg."
+  },
+  {
+    id: "jessheim-hageby",
+    title: "Jessheim Hageby",
+    location: "Jessheim",
+    cityId: "jessheim",
+    service: "nybygg-rehab",
+    zone: "VEKST",
+    tags: ["Boligfelt", "Modernisering"],
+    description: "Bistand med teknisk tømrerarbeid i nytt boligfelt."
+  },
+  {
+    id: "kolbotn-torg-service",
+    title: "Kolbotn Torg Service",
+    location: "Kolbotn",
+    cityId: "kolbotn",
+    service: "vindusservice",
+    zone: "MODERNE",
+    tags: ["Næring", "Vedlikehold"],
+    description: "Rutineservice og justering av alle inngangspartier og vinduer."
+  },
+  {
+    id: "bekkestua-villa-moderne",
+    title: "Bekkestua Villa Moderne",
+    location: "Bekkestua",
+    cityId: "bekkestua",
+    service: "tomrer",
+    zone: "MODERNE",
+    tags: ["Enebolig", "Arkitektur"],
+    description: "Tømrerarbeid for arkitekttegnet bolig med listefrie løsninger."
+  },
+  {
+    id: "grunerlokka-loft-transform",
+    title: "Grünerløkka Loft Transform",
+    location: "Grünerløkka",
+    cityId: "grunerlokka",
+    service: "nybygg-rehab",
+    zone: "HISTORISK",
+    tags: ["Loft", "Bygård"],
+    description: "Kompleks loftutbygging i klassisk bygård."
+  },
+  {
+    id: "stabekk-torg-fasade",
+    title: "Stabekk Torg Fasade",
+    location: "Stabekk",
+    cityId: "stabekk",
+    service: "tak-fasade",
+    zone: "MODERNE",
+    tags: ["Torg", "Fasade"],
+    description: "Rehabilitering av fasader mot torget i Stabekk."
+  },
+  {
+    id: "ullern-utsikt-vindu",
+    title: "Ullern Utsikt Vindu",
+    location: "Ullern",
+    cityId: "ullern",
+    service: "vindusservice",
+    zone: "MODERNE",
+    tags: ["Bolig", "Utsikt"],
+    description: "Service på store panaromavinduer og skyvedører."
+  },
+  {
+    id: "asker-panorama-nybygg",
+    title: "Asker Panorama Nybygg",
+    location: "Asker",
+    cityId: "asker-sentrum",
+    service: "nybygg-rehab",
+    zone: "MODERNE",
+    tags: ["Næring", "Totalentreprise"],
+    description: "Teknisk rehabilitering av fellesarealer."
+  },
+  {
+    id: "sagene-moll-restaurering",
+    title: "Sagene Mølle Restaurering",
+    location: "Sagene",
+    cityId: "sagene",
+    service: "restaurering",
+    zone: "HISTORISK",
+    tags: ["Industriarv", "Teglstein"],
+    description: "Skånsom restaurering av historiske industrifasader."
+  }
+];
 // Final validation completed
 

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { services, cities, cityNames, getServiceContent } from '@/lib/data';
+import { services, cities, cityNames, getServiceContent, projects } from '@/lib/data';
 import { ContactForm } from '@/components/ContactForm';
 
 interface PageProps {
@@ -104,6 +104,46 @@ export default async function ServiceCityPage({ params }: PageProps) {
                     <p className="text-2xl md:text-3xl text-[#e6e5de]/80 font-light max-w-4xl leading-relaxed">
                         {hook}
                     </p>
+                </div>
+
+                {/* BEVIS-MASKINEN: AUTOMATSISK REFERANSE-INJEKSJON */}
+                <div className="mt-32 space-y-12">
+                    <div className="flex items-center gap-4">
+                        <div className="h-[1px] flex-1 bg-white/10" />
+                        <h2 className="text-[10px] font-mono text-[#2eff9b] uppercase tracking-[0.4em]">Proven_Local_Authority</h2>
+                        <div className="h-[1px] flex-1 bg-white/10" />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {projects
+                            .filter(p => p.cityId === city || p.zone === zone)
+                            .slice(0, 2)
+                            .map((project) => (
+                                <Link 
+                                    href={`/prosjekter/${project.id}`} 
+                                    key={project.id}
+                                    className="group relative bg-[#1f1d1f] border border-white/5 p-8 overflow-hidden hover:border-[#2eff9b]/30 transition-all duration-500"
+                                >
+                                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                                        <div className="text-[10px] font-mono text-[#2eff9b]">DETALJER →</div>
+                                    </div>
+                                    
+                                    <div className="space-y-4">
+                                        <div className="flex gap-2">
+                                            <span className="text-[8px] font-mono px-1.5 py-0.5 border border-[#2eff9b]/30 text-[#2eff9b] uppercase">Referanse</span>
+                                            <span className="text-[8px] font-mono px-1.5 py-0.5 border border-white/10 text-white/40 uppercase">{project.location}</span>
+                                        </div>
+                                        <h3 className="text-xl font-bold tracking-tight group-hover:text-[#2eff9b] transition-colors">{project.title}</h3>
+                                        <p className="text-sm text-white/40 font-light leading-relaxed line-clamp-2">
+                                            {project.description}
+                                        </p>
+                                    </div>
+
+                                    {/* Action Green Indicator */}
+                                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#2eff9b] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                                </Link>
+                            ))}
+                    </div>
                 </div>
 
                 {/* DEEP CONTEXT LINKING MODUL */}
